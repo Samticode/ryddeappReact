@@ -1,9 +1,15 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+
+
+app.use(cors());
+
 
 app.get('/api', (req, res) => {
-    res.send([{name: 'John', age: 30}]);
+    res.send({ users: ['John', 'Betty', 'Hal'] });
 });
+
 
 const port = 3000;
 app.listen(port, () => {

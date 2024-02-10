@@ -21,3 +21,37 @@ body {
   background-color: var(--black);
   font-family: 'Helvetica';
 }
+
+.color-palet-div {
+  border: #f1f1f1 solid 0.5px;
+  height: 75px;
+  width: calc(75px * 4);
+
+  display: flex;
+
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+
+  div {
+    height: 100%;
+    width: 100%;
+  }
+  div:nth-child(1) {
+    background-color: var(--taupe);
+  }
+  div:nth-child(2) {
+    background-color: var(--davs-gray);
+  }
+  div:nth-child(3) {
+    background-color: var(--myrtle-green);
+  }
+  div:nth-child(4) {
+    background-color: var(--mint);
+  }
+
+}
+
+.user {
+  color: var(--mint);
+}
