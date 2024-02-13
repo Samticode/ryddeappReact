@@ -1,13 +1,13 @@
 import './App.css';
-import Data from './components/Data/Data';
+import FamilySignUpForm from './components/FamilySignUpForm/FamilySignUpForm.js';
 
 function App() {
   return (
     <>
       <h1 className="title">Rydde App</h1>
 
-      <Data />
-      
+      <FamilySignUpForm />
+
       <div className="color-palet-div">
         <div></div>
         <div></div>

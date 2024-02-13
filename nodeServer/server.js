@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const sqlite3 = require('better-sqlite3', { verbose: console.log })
 
 const db = new sqlite3('./database/data.db')
 
 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 
@@ -29,6 +31,14 @@ app.get('/api/all', (req, res) => {
     const data = db.prepare(query).all();
     res.send(data);
 });
+
+app.post('/api/createFamily', (req, res) => {
+    const query = `
+        INSERT INTO Families (FamilyName, FamilyPassword) VALUES (?, ?)
+    `;
+    const data = db.prepare(query).run(req.body.familyName, req.body.familyPassword);
+    res.send(data);
+})
 
 
 

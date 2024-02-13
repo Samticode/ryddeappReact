@@ -57,3 +57,6 @@ body {
     color: var(--mint);
   }
 }
+label {
+  color: var(--mint);
+}
