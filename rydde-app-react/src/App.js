@@ -1,12 +1,12 @@
 import './App.css';
 import FamilySignUpForm from './components/FamilySignUpForm/FamilySignUpForm.js';
+import BackgroundThings from './components/BackgroundThings/BackgroundThings.js';
 
 function App() {
   return (
     <>
-      <h1 className="title">Rydde App</h1>
-
-      <FamilySignUpForm />
+      {/* <FamilySignUpForm /> */}
+      <BackgroundThings />
 
       <div className="color-palet-div">
         <div></div>
