@@ -23,7 +23,6 @@ body {
 }
 
 .color-palet-div {
-  border: #f1f1f1 solid 0.5px;
   height: 75px;
   width: calc(75px * 4);
 
@@ -53,5 +52,8 @@ body {
 }
 
 .user {
-  color: var(--mint);
+  margin: 2%;
+  p {
+    color: var(--mint);
+  }
 }
