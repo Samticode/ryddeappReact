@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
 
 :root {
@@ -17,13 +18,19 @@
   --brown: #56504E;
 }
 
-p, h1, h2, h3, h4, h5, h6, label {
+p, h1, h2, h3, h4, h5, h6, label, input{
   color: var(--white);
+  font-family: "Quicksand", sans-serif;
+}
+
+input {
+  color: var(--black);
 }
 
 body {
   background-color: var(--black);
   font-family: 'Helvetica';
+  overflow: hidden;
 }
 
 .color-palet-div {
@@ -34,7 +41,7 @@ body {
 
   position: absolute;
   bottom: 5%;
-  right: 5%;
+  right: 3%;
 
   div {
     height: 100%;

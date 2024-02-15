@@ -2,8 +2,13 @@ import './FamilySignUpForn.css';
 import React, { useState } from 'react';
 
 function FamilySignUpForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [isLoginVisible, setLoginVisible] = useState(true);
+  const [signupFamilyName, setSignupFamilyName] = useState('');
+  const [signupFamilyPassword, setSignupFamilyPassword] = useState('');
+
+  const toggleVisibility = () => {
+    setLoginVisible(!isLoginVisible);
+  };
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -14,31 +19,51 @@ function FamilySignUpForm() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        familyName: username,
-        familyPassword: password
+        familyName: signupFamilyName,
+        familyPassword: signupFamilyPassword
       })
     });
 
     const data = await response.json();
-    console.log(data);
+    console.log(`Success: ${data}`);
 
-    setUsername('');
-    setPassword('');
+    setSignupFamilyName('');
+    setSignupFamilyPassword('');
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-        <input type="submit" value="Log in" />
-      </form>
+    <div className='changingForm'>
+      {isLoginVisible ? 
+          <div className='the-form-div signup-div'>
+          <h1 className='signup-title form-title'>Signup Family</h1>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Family Name: <br />
+              <input type='text' name='signupFamilyName' value={signupFamilyName} onChange={e => setSignupFamilyName(e.target.value)} />
+            </label>
+            <label>
+              Family Password: <br />
+              <input type='password' name='signupFamilyPassword' value={signupFamilyPassword} onChange={e => setSignupFamilyPassword(e.target.value)} />
+            </label>
+            <input className='submit-btn' type='submit' value='Submit' />
+          </form>
+          <button className='to-btn' onClick={toggleVisibility}>To Login</button>
+        </div> 
+        : 
+        <div className='the-form-div login-div'>
+        {/* <form>
+          <label>
+            Family Name:
+            <input type='text' name='signupFamilyName' />
+          </label>
+          <label>
+            Family Password:
+            <input type='password' name='signupFamilyPassword' />
+          </label>
+          <input type='submit' value='Submit'/>
+        </form>
+        <button onClick={toggleVisibility}>To Signup</button> */}
+      </div>}
     </div>
   );
 };

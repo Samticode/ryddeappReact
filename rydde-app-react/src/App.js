@@ -5,8 +5,8 @@ import BackgroundThings from './components/BackgroundThings/BackgroundThings.js'
 function App() {
   return (
     <>
-      {/* <FamilySignUpForm /> */}
       <BackgroundThings />
+      <FamilySignUpForm />
 
       <div className="color-palet-div">
         <div></div>

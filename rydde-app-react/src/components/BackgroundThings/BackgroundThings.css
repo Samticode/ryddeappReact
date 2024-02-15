@@ -1,4 +1,4 @@
-main {
+.background-things-main {
     height: 100vh;
     width: 100vw;
 
@@ -24,7 +24,7 @@ main {
 
     border-radius: 50%;
     background-color: aliceblue;
-    animation: breath 10s infinite;
+    /* animation: breath 10s infinite; */
 }
 
 

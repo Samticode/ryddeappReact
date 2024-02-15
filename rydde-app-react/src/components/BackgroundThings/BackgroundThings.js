@@ -2,7 +2,7 @@ import './BackgroundThings.css'
 
 function BackgroundThings() {
     return(
-        <main>
+        <main className='background-things-main'>
             <section>
                 <div className="background-thing"></div>
                 <div className="background-thing"></div>
