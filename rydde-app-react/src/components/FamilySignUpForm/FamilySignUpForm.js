@@ -51,18 +51,19 @@ function FamilySignUpForm() {
         </div> 
         : 
         <div className='the-form-div login-div'>
-        {/* <form>
-          <label>
-            Family Name:
-            <input type='text' name='signupFamilyName' />
-          </label>
-          <label>
-            Family Password:
-            <input type='password' name='signupFamilyPassword' />
-          </label>
-          <input type='submit' value='Submit'/>
-        </form>
-        <button onClick={toggleVisibility}>To Signup</button> */}
+          <h1 className='login-title form-title'>Login Family</h1>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Family Name: <br />
+              <input type='text' name='loginFamilyName' />
+            </label>
+            <label>
+              Family Password: <br />
+              <input type='password' name='loginFamilyPassword' />
+            </label>
+            <input className='submit-btn' type='submit' value='Submit' />
+          </form>
+          <button className='to-btn' onClick={toggleVisibility}>To Signup</button>
       </div>}
     </div>
   );
