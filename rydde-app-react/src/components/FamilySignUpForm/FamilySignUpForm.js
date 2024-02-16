@@ -3,14 +3,19 @@ import React, { useState } from 'react';
 
 function FamilySignUpForm() {
   const [isLoginVisible, setLoginVisible] = useState(true);
+
   const [signupFamilyName, setSignupFamilyName] = useState('');
   const [signupFamilyPassword, setSignupFamilyPassword] = useState('');
+
+  const [loginFamilyName, setLoginFamilyName] = useState('');
+  const [loginFamilyPassword, setLoginFamilyPassword] = useState('');
+
 
   const toggleVisibility = () => {
     setLoginVisible(!isLoginVisible);
   };
 
-  const handleSubmit = async event => {
+  const signupHandleSubmit = async event => {
     event.preventDefault();
 
     const response = await fetch('/api/createFamily', {
@@ -31,19 +36,25 @@ function FamilySignUpForm() {
     setSignupFamilyPassword('');
   };
 
+  const loginHandleSubmit = async event => {
+    event.preventDefault();
+
+    console.log('loginHandleSubmit');
+  };
+
   return (
     <div className='changingForm'>
       {isLoginVisible ? 
-          <div className='the-form-div signup-div'>
+        <div className='the-form-div signup-div'>
           <h1 className='signup-title form-title'>Signup Family</h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={signupHandleSubmit}>
             <label>
               Family Name: <br />
-              <input type='text' name='signupFamilyName' value={signupFamilyName} onChange={e => setSignupFamilyName(e.target.value)} />
+              <input required type='text' name='signupFamilyName' value={signupFamilyName} onChange={e => setSignupFamilyName(e.target.value)} />
             </label>
             <label>
               Family Password: <br />
-              <input type='password' name='signupFamilyPassword' value={signupFamilyPassword} onChange={e => setSignupFamilyPassword(e.target.value)} />
+              <input required type='password' name='signupFamilyPassword' value={signupFamilyPassword} onChange={e => setSignupFamilyPassword(e.target.value)} />
             </label>
             <input className='submit-btn' type='submit' value='Submit' />
           </form>
@@ -52,19 +63,19 @@ function FamilySignUpForm() {
         : 
         <div className='the-form-div login-div'>
           <h1 className='login-title form-title'>Login Family</h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={loginHandleSubmit}>
             <label>
               Family Name: <br />
-              <input type='text' name='loginFamilyName' />
+              <input required type='text' name='loginFamilyName'  value={loginFamilyName} onChange={e => setLoginFamilyName(e.target.value)}/>
             </label>
             <label>
               Family Password: <br />
-              <input type='password' name='loginFamilyPassword' />
+              <input required type='password' name='loginFamilyPassword' value={loginFamilyPassword} onChange={e => setLoginFamilyPassword(e.target.value)}/>
             </label>
             <input className='submit-btn' type='submit' value='Submit' />
           </form>
           <button className='to-btn' onClick={toggleVisibility}>To Signup</button>
-      </div>}
+        </div>}
     </div>
   );
 };
