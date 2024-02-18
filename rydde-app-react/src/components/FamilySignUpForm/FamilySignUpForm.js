@@ -1,20 +1,24 @@
-import './FamilySignUpForn.css';
+import './FamilySignUpForm.css';
 import React, { useState } from 'react';
 
 function FamilySignUpForm() {
+  // State variables for form visibility
   const [isLoginVisible, setLoginVisible] = useState(true);
 
+  // State variables for signup form
   const [signupFamilyName, setSignupFamilyName] = useState('');
   const [signupFamilyPassword, setSignupFamilyPassword] = useState('');
 
+  // State variables for login form
   const [loginFamilyName, setLoginFamilyName] = useState('');
   const [loginFamilyPassword, setLoginFamilyPassword] = useState('');
 
-
+  // Function to toggle form visibility
   const toggleVisibility = () => {
     setLoginVisible(!isLoginVisible);
   };
 
+  // Function to handle signup form submission
   const signupHandleSubmit = async event => {
     event.preventDefault();
 
@@ -32,10 +36,12 @@ function FamilySignUpForm() {
     const data = await response.json();
     console.log(`Success: ${data}`);
 
+    // Reset signup form fields
     setSignupFamilyName('');
     setSignupFamilyPassword('');
   };
 
+  // Function to handle login form submission
   const loginHandleSubmit = async event => {
     event.preventDefault();
 
@@ -45,6 +51,7 @@ function FamilySignUpForm() {
   return (
     <div className='changingForm'>
       {isLoginVisible ? 
+        // Signup form
         <div className='the-form-div signup-div'>
           <h1 className='signup-title form-title'>Signup Family</h1>
           <form onSubmit={signupHandleSubmit}>
@@ -61,6 +68,7 @@ function FamilySignUpForm() {
           <button className='to-btn' onClick={toggleVisibility}>To Login</button>
         </div> 
         : 
+        // Login form
         <div className='the-form-div login-div'>
           <h1 className='login-title form-title'>Login Family</h1>
           <form onSubmit={loginHandleSubmit}>
