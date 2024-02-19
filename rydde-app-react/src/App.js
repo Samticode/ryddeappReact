@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Navigation from './components/Navigation/Navigation.js';
-import FamilySignUpForm from './components/FamilySignUpForm/FamilySignUpForm.js';
+import Family from './components/FamilySignUpForm/Family.js';
 import BackgroundThings from './components/BackgroundThings/BackgroundThings.js';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   let siteComponent = null;
 
   if (siteNumber === 1) {
-    siteComponent = <FamilySignUpForm setSiteNumber={setSiteNumber} />
+    siteComponent = <Family siteNumber={siteNumber} setSiteNumber={setSiteNumber}/>
   } else if (siteNumber === 2) {
     siteComponent =  <div>Site 2</div>
   } else if (siteNumber === 3) {
@@ -23,12 +23,12 @@ function App() {
 
       {siteComponent}
 
-      <div className="color-palet-div">
+      {/* <div className="color-palet-div">
         <div></div>
         <div></div>
         <div></div>
         <div></div>
-      </div>
+      </div> */}
     </>
   );
 };

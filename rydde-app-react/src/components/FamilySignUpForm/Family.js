@@ -1,7 +1,7 @@
-import './FamilySignUpForn.css';
+import './Family.css';
 import React, { useState } from 'react';
 
-function FamilySignUpForm(props) {
+function Family(props) {
   const [isLoginVisible, setLoginVisible] = useState(true);
 
   const [signupFamilyName, setSignupFamilyName] = useState('');
@@ -10,8 +10,10 @@ function FamilySignUpForm(props) {
   const [loginFamilyName, setLoginFamilyName] = useState('');
   const [loginFamilyPassword, setLoginFamilyPassword] = useState('');
 
+
   // Function to toggle form visibility
   const toggleVisibility = () => {
+    console.log('Toggling visibility');
     setLoginVisible(!isLoginVisible);
   };
 
@@ -31,7 +33,12 @@ function FamilySignUpForm(props) {
     });
 
     const data = await response.json();
-    console.log(`Success: ${data}`);
+    if (data.message === 'Success') {
+      alert('Family created! Please login.');
+      toggleVisibility();
+    } else {
+      alert(data.message);
+    }
 
     setSignupFamilyName('');
     setSignupFamilyPassword('');
@@ -41,7 +48,19 @@ function FamilySignUpForm(props) {
   const loginHandleSubmit = async event => {
     event.preventDefault();
 
-    console.log('loginHandleSubmit');
+    const response = await fetch('/api/loginFamily', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        familyName: loginFamilyName,
+        familyPassword: loginFamilyPassword
+      })
+    });
+
+    const data = await response.json();
+    alert(data.message);
   };
 
   return (
@@ -84,4 +103,4 @@ function FamilySignUpForm(props) {
   );
 };
 
-export default FamilySignUpForm;
+export default Family;

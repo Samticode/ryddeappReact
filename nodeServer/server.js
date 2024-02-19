@@ -39,14 +39,38 @@ app.get('/api/all', (req, res) => {
 
 
 app.post('/api/createFamily', async (req, res) => {
-    const hashedPassword = await bcrypt.hash(req.body.familyPassword, saltRounds);
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.familyPassword, saltRounds);
 
-    const query = `
-        INSERT INTO Families (FamilyName, FamilyPassword) VALUES (?, ?)
-    `;
-    const data = db.prepare(query).run(req.body.familyName, hashedPassword);
-    res.send(data);
-})
+        const query = `INSERT INTO Families (FamilyName, FamilyPassword) VALUES (?, ?)`;
+        const data = db.prepare(query).run(req.body.familyName, hashedPassword);
+        res.send({ message: 'Family created successfully, Procced to login' });
+    } catch (error) {
+        res.status(500).send({ message: 'Error creating family' });
+    }
+});
+
+
+app.post('/api/loginFamily', async (req, res) => {
+    const query = `SELECT * FROM Families WHERE FamilyName = ?`;
+
+    const data = db.prepare(query).get(req.body.familyName);
+
+    if (data) {
+        const match = await bcrypt.compare(req.body.familyPassword, data.FamilyPassword);
+        if (match) {
+            res.send({ message: 'Success' });
+            console.log('Success!')
+        } else {
+            res.send({ message: 'Incorrect password' });
+            console.log('Incorrect password')
+        }
+    } else {
+        res.send({ message: 'Family not found' });
+        console.log('Family not found')
+    }
+    
+});
 
 
 
