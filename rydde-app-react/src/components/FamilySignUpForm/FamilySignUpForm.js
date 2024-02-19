@@ -1,15 +1,12 @@
-import './FamilySignUpForm.css';
+import './FamilySignUpForn.css';
 import React, { useState } from 'react';
 
-function FamilySignUpForm() {
-  // State variables for form visibility
+function FamilySignUpForm(props) {
   const [isLoginVisible, setLoginVisible] = useState(true);
 
-  // State variables for signup form
   const [signupFamilyName, setSignupFamilyName] = useState('');
   const [signupFamilyPassword, setSignupFamilyPassword] = useState('');
 
-  // State variables for login form
   const [loginFamilyName, setLoginFamilyName] = useState('');
   const [loginFamilyPassword, setLoginFamilyPassword] = useState('');
 
@@ -36,7 +33,6 @@ function FamilySignUpForm() {
     const data = await response.json();
     console.log(`Success: ${data}`);
 
-    // Reset signup form fields
     setSignupFamilyName('');
     setSignupFamilyPassword('');
   };
