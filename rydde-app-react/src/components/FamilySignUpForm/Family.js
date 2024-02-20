@@ -11,11 +11,21 @@ function Family(props) {
   const [loginFamilyPassword, setLoginFamilyPassword] = useState('');
 
 
+
   // Function to toggle form visibility
   const toggleVisibility = () => {
     console.log('Toggling visibility');
     setLoginVisible(!isLoginVisible);
   };
+
+  const clearInputs = () => {
+    setSignupFamilyName('');
+    setSignupFamilyPassword('');
+    setLoginFamilyName('');
+    setLoginFamilyPassword('');
+  };
+
+
 
   // Function to handle signup form submission
   const signupHandleSubmit = async event => {
@@ -35,13 +45,11 @@ function Family(props) {
     const data = await response.json();
     if (data.message === 'Success') {
       alert('Family created! Please login.');
-      toggleVisibility();
     } else {
       alert(data.message);
     }
-
-    setSignupFamilyName('');
-    setSignupFamilyPassword('');
+    
+    clearInputs();
   };
 
   // Function to handle login form submission
@@ -60,8 +68,18 @@ function Family(props) {
     });
 
     const data = await response.json();
-    alert(data.message);
+
+    if (data.message === 'Success') {
+      alert('Fuck Yeah');
+      props.setSiteNumber(2);
+    } else {
+      alert(data.message);
+    }
+
+    clearInputs();
   };
+
+
 
   return (
     <div className='changingForm'>

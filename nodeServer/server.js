@@ -5,15 +5,39 @@ const cors = require('cors');
 const sqlite3 = require('better-sqlite3', { verbose: console.log })
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
+const session = require('express-session');
+
+
 
 
 const db = new sqlite3('./database/data.db')
 const saltRounds = 10 || process.env.SALT_ROUNDS;
+dotenv.config();
 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
+
+
+
+
+function setSessionVariables(data, reqSession) {
+    reqSession.familyId = data.FamilyID;
+    reqSession.familyName = data.FamilyName;
+
+    reqSession.userId = '';
+    reqSession.username = '';
+    reqSession.email = '';
+    reqSession.password = '';
+    reqSession.isParent = '';
+}
+
 
 
 
@@ -44,7 +68,7 @@ app.post('/api/createFamily', async (req, res) => {
 
         const query = `INSERT INTO Families (FamilyName, FamilyPassword) VALUES (?, ?)`;
         const data = db.prepare(query).run(req.body.familyName, hashedPassword);
-        res.send({ message: 'Family created successfully, Procced to login' });
+        res.send({ message: 'Success'});
     } catch (error) {
         res.status(500).send({ message: 'Error creating family' });
     }
@@ -52,25 +76,28 @@ app.post('/api/createFamily', async (req, res) => {
 
 
 app.post('/api/loginFamily', async (req, res) => {
-    const query = `SELECT * FROM Families WHERE FamilyName = ?`;
+    const query = `SELECT FamilyID, FamilyName, FamilyPassword FROM Families WHERE FamilyName = ?`;
 
     const data = db.prepare(query).get(req.body.familyName);
 
     if (data) {
         const match = await bcrypt.compare(req.body.familyPassword, data.FamilyPassword);
         if (match) {
-            res.send({ message: 'Success' });
-            console.log('Success!')
+            setSessionVariables(data, req.session);
+          res.send({ message: 'Success' });
+          console.log('Success!')
         } else {
-            res.send({ message: 'Incorrect password' });
-            console.log('Incorrect password')
+          res.send({ message: 'Incorrect password' });
+          console.log('Incorrect password')
         }
-    } else {
+      } else {
         res.send({ message: 'Family not found' });
         console.log('Family not found')
-    }
-    
+      }
+
+      console.log(req.session)
 });
+
 
 
 
