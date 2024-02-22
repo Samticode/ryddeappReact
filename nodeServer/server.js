@@ -98,6 +98,17 @@ app.post('/api/loginFamily', async (req, res) => {
 
 
 //-------------------- USER --------------------//
+app.get('/api/user', (req, res) => {
+    const query = `
+        SELECT Users.*, Families.FamilyName
+        FROM Users
+        INNER JOIN Families ON Users.FamilyID = Families.FamilyID
+        WHERE Users.UserID = ?`;
+    const data = db.prepare(query).get(req.session.userId);
+    res.send(data);
+});
+
+
 app.post('/api/createUser', async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
@@ -139,6 +150,17 @@ app.post('/api/loginUser', async (req, res) => {
 });
 
 
+app.put('/api/updateUser', async (req, res) => {
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.Password, saltRounds);
+
+        const query = `UPDATE Users SET Username = ?, Email = ?, Password = ? WHERE UserID = ?`;
+        const data = db.prepare(query).run(req.body.Username, req.body.Email, hashedPassword, req.body.UserID);
+        res.send({ message: 'Success' });
+    } catch (error) {
+        res.status(500).send({ message: `Error updating user: ${error.message}` });
+    }
+});
 
 
 const port = 3000 || process.env.PORT;

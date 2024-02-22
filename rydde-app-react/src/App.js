@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
-import Navigation from './components/Navigation/Navigation.js';
-import Family from './components/FamilySignUpForm/Family.js';
 import BackgroundThings from './components/BackgroundThings/BackgroundThings.js';
+
+import Navigation from './components/Navigation/Navigation.js';
+
+import Family from './components/FamilySignUpForm/Family.js';
 import User from './components/User/User.js';
+import Profile from './components/Profile/Profile.js';
+
 
 function App() {
   const [siteNumber, setSiteNumber] = useState(1);
@@ -16,7 +20,7 @@ function App() {
   } else if (siteNumber === 3) {
     siteComponent =  <div>Site 3</div>
   } else if (siteNumber === 4) {
-    siteComponent = <div>Site 4</div>
+    siteComponent = <Profile />
   }
 
   return (
