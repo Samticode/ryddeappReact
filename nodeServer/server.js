@@ -27,20 +27,6 @@ app.use(session({
 
 
 
-function setSessionVariables(data, reqSession) {
-    reqSession.familyId = data.FamilyID;
-    reqSession.familyName = data.FamilyName;
-
-    reqSession.userId = '';
-    reqSession.username = '';
-    reqSession.email = '';
-    reqSession.password = '';
-    reqSession.isParent = '';
-}
-
-
-
-
 app.get('/api/all', (req, res) => {
     const query = `
         SELECT 
@@ -62,6 +48,9 @@ app.get('/api/all', (req, res) => {
 });
 
 
+
+
+//-------------------- FAMILY --------------------//
 app.post('/api/createFamily', async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.familyPassword, saltRounds);
@@ -70,7 +59,7 @@ app.post('/api/createFamily', async (req, res) => {
         const data = db.prepare(query).run(req.body.familyName, hashedPassword);
         res.send({ message: 'Success'});
     } catch (error) {
-        res.status(500).send({ message: 'Error creating family' });
+        res.status(500).send({ message: error });
     }
 });
 
@@ -83,12 +72,19 @@ app.post('/api/loginFamily', async (req, res) => {
     if (data) {
         const match = await bcrypt.compare(req.body.familyPassword, data.FamilyPassword);
         if (match) {
-            setSessionVariables(data, req.session);
-          res.send({ message: 'Success' });
-          console.log('Success!')
+            req.session.familyId = data.FamilyID;
+            req.session.familyName = data.FamilyName;
+
+            req.session.userId = '';
+            req.session.username = '';
+            req.session.email = '';
+            req.session.password = '';
+            req.session.isParent = '';
+            res.send({ message: 'Success' });
+            console.log('Success!')
         } else {
-          res.send({ message: 'Incorrect password' });
-          console.log('Incorrect password')
+            res.send({ message: 'Incorrect password' });
+            console.log('Incorrect password')
         }
       } else {
         res.send({ message: 'Family not found' });
@@ -96,6 +92,50 @@ app.post('/api/loginFamily', async (req, res) => {
       }
 
       console.log(req.session)
+});
+
+
+
+
+//-------------------- USER --------------------//
+app.post('/api/createUser', async (req, res) => {
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+
+        const query = `INSERT INTO Users (Username, Password, Email, IsParent, FamilyID) VALUES (?, ?, ?, ?, ?)`;
+        const data = db.prepare(query).run(req.body.username, hashedPassword, req.body.mail, req.body.isParent, req.session.familyId);
+        res.send({ message: 'Success'});
+    } catch (error) {
+        res.status(500).send({ message: 'Error creating user' });
+    }
+});
+
+
+app.post('/api/loginUser', async (req, res) => {
+    const query = `SELECT UserID, Username, Password, Email, IsParent FROM Users WHERE Username = ?`;
+
+    const data = db.prepare(query).get(req.body.username);
+
+    if (data) {
+        const match = await bcrypt.compare(req.body.password, data.Password);
+        if (match) {
+            req.session.userId = data.UserID;
+            req.session.username = data.Username;
+            req.session.email = data.Email;
+            req.session.password = data.Password;
+            req.session.isParent = data.IsParent;
+            res.send({ message: 'Success' });
+            console.log('Success!')
+        } else {
+            res.send({ message: 'Incorrect password' });
+            console.log('Incorrect password')
+        }
+    } else {
+        res.send({ message: 'User not found' });
+        console.log('User not found')
+    }
+
+    console.log(req.session)
 });
 
 

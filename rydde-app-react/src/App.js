@@ -12,9 +12,11 @@ function App() {
   if (siteNumber === 1) {
     siteComponent = <Family siteNumber={siteNumber} setSiteNumber={setSiteNumber}/>
   } else if (siteNumber === 2) {
-    siteComponent =  <User />
+    siteComponent =  <User iteNumber={siteNumber} setSiteNumber={setSiteNumber}/>
   } else if (siteNumber === 3) {
     siteComponent =  <div>Site 3</div>
+  } else if (siteNumber === 4) {
+    siteComponent = <div>Site 4</div>
   }
 
   return (

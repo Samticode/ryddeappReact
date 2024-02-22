@@ -39,7 +39,7 @@ nav {
             transform: translateY(-50%);
 
             height: 90%;
-            width: 33%;
+            width: 25%;
             background-color: var(--black);
             border-radius: 5vmax;
         }

@@ -45,6 +45,7 @@ function Family(props) {
     const data = await response.json();
     if (data.message === 'Success') {
       alert('Family created! Please login.');
+      toggleVisibility();
     } else {
       alert(data.message);
     }
