@@ -67,9 +67,18 @@ function Profile() {
           )}
         </form>
 
+        <div className='profile-picture-div'>
+            <img src='https://f4.bcbits.com/img/a0278225955_65'/>
+            <div className='profile-picture-setting-div'>
+
+            </div>
+        </div>
+
         <div className='email-test-div'>
-          <h2>Test Email</h2>
-          <p>Send a test email to your email address to verify that it is correct.</p>
+          <div>
+            <h2>Test Email</h2>
+            <p>Send a test email to your email address to verify that it is correct.</p>
+          </div>
           <button>Send Test Email</button>
         </div>
       </div>

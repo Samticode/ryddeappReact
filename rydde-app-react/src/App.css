@@ -8,13 +8,16 @@
 :root {
   --black: #1c1c1c;
   --white: #f1f1f1;
-  --taupe: #4A4238;
+  --beigh: #DAD9D2;
   --davs-gray: #4D5359;
+  
   --myrtle-green: #508484;
   --mint: #79C99E;
-  --beigh: #DAD9D2;
   --green: #171D03;
   --light-green: #242d06;
+  
+  --taupe: #201d18;
+  --taupe-light: #3a342b;
   --brown: #56504E;
 }
 

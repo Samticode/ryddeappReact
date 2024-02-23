@@ -13,9 +13,10 @@
     margin: 8vh 0 0 0;
 
     h1 {
-        font-size: 3.5rem;
+        font-size: 3.25vw;
         margin: 0 0 0 0.5em;
     }
+
     .tile-grid-container {
         height: 92%;
         width: 100%;
@@ -54,6 +55,69 @@
                 border: none;
                 background-color: var(--green);
                 color: var(--white);
+            }
+        }
+
+        .profile-picture-div{
+            width: 98%;
+            grid-column: 7 / 21;
+            grid-row: 1 / 6;
+
+            display: grid;
+            grid-template-columns: 33% 1fr;
+            place-items: center;
+
+            img {
+                width: 95%;
+                aspect-ratio: 1 / 1;
+                border-radius: 0.8vmax;
+            }
+            div {
+                height: 100%;
+                width: 100%;
+
+            }
+        }
+
+        .email-test-div {
+            height: 94%;
+            width: 98%;
+            grid-column: 7 / 21;
+            grid-row: 6 / 11;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            place-items: center;
+
+            text-align: center;
+
+            h2 {
+                font-size: 2.75vw;
+                margin: 6% 0 5% 2%;
+            }
+            p {
+                font-size: 1.5vw;
+                margin: 5% 0 6% 2%;
+            }
+            button {
+                width: 65%;
+                padding: 10%;
+                border-radius: 1vmax;
+                border: none;
+
+                background-color: var(--taupe);
+                color: var(--white);
+                font-size: 1.25vw;
+                transition-duration: 250ms;
+
+                &:hover {
+                    background-color: var(--taupe-light);
+                    scale: 1.03;
+                }
+                &:active {
+                    background-color: var(--taupe);
+                    scale: 0.98;
+                }
             }
         }
     }
