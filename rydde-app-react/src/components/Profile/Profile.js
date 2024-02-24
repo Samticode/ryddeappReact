@@ -7,6 +7,7 @@ function Profile() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [pfp, setPfp] = useState('');
 
   useEffect(() => {
     async function getUserInfo() {
@@ -16,7 +17,7 @@ function Profile() {
       setUserId(data.UserID);
       setUsername(data.Username);
       setEmail(data.Email);
-
+      setPfp(data.ProfilePictureLink);
     }
     getUserInfo();
   }, []);
@@ -46,8 +47,26 @@ function Profile() {
     } else {
 
     }
-
   }
+
+  const handleEmailTest = async event => {
+    event.preventDefault();
+    const response = await fetch('/api/testMail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        Email: email
+      }),
+    });
+    const data = await response.json();
+    if (data.message === 'Email sent') {
+      alert('Test email sent');
+    } else {
+      alert(data.message);
+    }
+  };
 
 
   return (
@@ -68,10 +87,12 @@ function Profile() {
         </form>
 
         <div className='profile-picture-div'>
-            <img src='https://f4.bcbits.com/img/a0278225955_65'/>
-            <div className='profile-picture-setting-div'>
-
-            </div>
+          <img src={pfp} alt='alt'/>
+          <div className='profile-picture-setting-div'>
+            <h2>Profile Picture</h2>
+            <p>Upload a new profile picture</p>
+            <input type='submit'/>
+          </div>
         </div>
 
         <div className='email-test-div'>
@@ -79,7 +100,7 @@ function Profile() {
             <h2>Test Email</h2>
             <p>Send a test email to your email address to verify that it is correct.</p>
           </div>
-          <button>Send Test Email</button>
+          <button onClick={handleEmailTest}>Send Test Email</button>
         </div>
       </div>
     </div>

@@ -72,10 +72,13 @@
                 aspect-ratio: 1 / 1;
                 border-radius: 0.8vmax;
             }
-            div {
+            .profile-picture-setting-div {
                 height: 100%;
                 width: 100%;
 
+                div {
+                    height: 5%;
+                }
             }
         }
 

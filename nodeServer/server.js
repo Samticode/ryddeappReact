@@ -6,6 +6,7 @@ const sqlite3 = require('better-sqlite3', { verbose: console.log })
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const session = require('express-session');
+const nodemailer = require('nodemailer');
 
 
 
@@ -60,6 +61,7 @@ app.post('/api/createFamily', async (req, res) => {
         res.send({ message: 'Success'});
     } catch (error) {
         res.status(500).send({ message: error });
+        console.log(error)
     }
 });
 
@@ -100,9 +102,11 @@ app.post('/api/loginFamily', async (req, res) => {
 //-------------------- USER --------------------//
 app.get('/api/user', (req, res) => {
     const query = `
-        SELECT Users.*, Families.FamilyName
+        SELECT Users.UserID, Users.Username, Users.Email, Users.Password, Users.IsParent, Users.FamilyID, Users.ProfilePictureID, Families.FamilyName, 
+        CASE WHEN Users.ProfilePictureID IS NULL THEN NULL ELSE ProfilePictures.ProfilePictureLink END AS ProfilePictureLink
         FROM Users
         INNER JOIN Families ON Users.FamilyID = Families.FamilyID
+        LEFT JOIN ProfilePictures ON Users.ProfilePictureID = ProfilePictures.PictureID
         WHERE Users.UserID = ?`;
     const data = db.prepare(query).get(req.session.userId);
     res.send(data);
@@ -117,6 +121,7 @@ app.post('/api/createUser', async (req, res) => {
         const data = db.prepare(query).run(req.body.username, hashedPassword, req.body.mail, req.body.isParent, req.session.familyId);
         res.send({ message: 'Success'});
     } catch (error) {
+        console.log(error)
         res.status(500).send({ message: 'Error creating user' });
     }
 });
@@ -161,6 +166,35 @@ app.put('/api/updateUser', async (req, res) => {
         res.status(500).send({ message: `Error updating user: ${error.message}` });
     }
 });
+
+// app.post('/api/testMail', async (req, res) => {
+//     const transporter = nodemailer.createTransport({
+//         service: 'gmail',
+//         auth: {
+//             user: req.body.Email,
+//             pass: process.env.EMAIL_PASSWORD
+//         }
+//     });
+
+//     const mailOptions = {
+//         from: 'Testing System',
+//         to: req.body.Email,
+//         subject: 'Test mail',
+//         text: 'This is a test mail'
+//     };
+
+//     transporter.sendMail(mailOptions, (error, info) => {
+//         if (error) {
+//             console.log(error);
+//             res.send({ message: 'Error sending mail' });
+//         } else {
+//             console.log('Email sent: ' + info.response);
+//             res.send({ message: 'Email sent' });
+//         }
+//     });
+// });
+
+
 
 
 const port = 3000 || process.env.PORT;
