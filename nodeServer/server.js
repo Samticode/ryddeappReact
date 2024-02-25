@@ -167,32 +167,32 @@ app.put('/api/updateUser', async (req, res) => {
     }
 });
 
-// app.post('/api/testMail', async (req, res) => {
-//     const transporter = nodemailer.createTransport({
-//         service: 'gmail',
-//         auth: {
-//             user: req.body.Email,
-//             pass: process.env.EMAIL_PASSWORD
-//         }
-//     });
+app.post('/api/testMail', async (req, res) => {
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: req.body.Email,
+            pass: process.env.EMAIL_PASSWORD
+        }
+    });
 
-//     const mailOptions = {
-//         from: 'Testing System',
-//         to: req.body.Email,
-//         subject: 'Test mail',
-//         text: 'This is a test mail'
-//     };
+    const mailOptions = {
+        from: 'Testing System',
+        to: req.body.Email,
+        subject: 'Test mail',
+        text: 'This is a test mail'
+    };
 
-//     transporter.sendMail(mailOptions, (error, info) => {
-//         if (error) {
-//             console.log(error);
-//             res.send({ message: 'Error sending mail' });
-//         } else {
-//             console.log('Email sent: ' + info.response);
-//             res.send({ message: 'Email sent' });
-//         }
-//     });
-// });
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+            res.send({ message: 'Error sending mail' });
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.send({ message: 'Email sent' });
+        }
+    });
+});
 
 
 
