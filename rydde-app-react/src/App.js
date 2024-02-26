@@ -10,7 +10,7 @@ import Profile from './components/Profile/Profile.js';
 
 
 function App() {
-  const [siteNumber, setSiteNumber] = useState(1);
+  const [siteNumber, setSiteNumber] = useState(4);
   let siteComponent = null;
 
   if (siteNumber === 1) {

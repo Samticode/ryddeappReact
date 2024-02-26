@@ -68,42 +68,65 @@ function Profile() {
     }
   };
 
+  const handlePfpButton = () => {
+    const pfpOptionContainer = document.querySelector('.pfp-option-container');
+    pfpOptionContainer.classList.toggle('active');
+  };
+
+  
+
 
   return (
-    <div className="profile-section">
-      <h1>Profile</h1>
-      <div className="tile-grid-container">
-        <form className='user-info-div' onSubmit={handleUpdateSubmit}>
-          {userInfo && (
-            <>
-              <label>Username:<br /> <input name='updateUsername' type='text' value={username} onChange={e => setUsername(e.target.value)}/></label>
-              <label>Email:<br /> <input name='updateEmail' type='text' value={email} onChange={e => setEmail(e.target.value)}/></label>
-              <label>Password:<br /> <input name='updatePassword' type='text' value={password} onChange={e => setPassword(e.target.value)}/></label>
-              <label>Family:<br /> <input readOnly name='' type='text' value={userInfo.FamilyName}/></label>
-              <div></div>
-              <input name='submit-update' type='submit' value='Update Info'/>
-            </>
-          )}
-        </form>
+      <div className="profile-section">
+        <h1>Profile</h1>
+        <div className="tile-grid-container">
+          <form className='user-info-div' onSubmit={handleUpdateSubmit}>
+            {userInfo && (
+              <>
+                <label>Username:<br /> <input name='updateUsername' type='text' value={username} onChange={e => setUsername(e.target.value)}/></label>
+                <label>Email:<br /> <input name='updateEmail' type='text' value={email} onChange={e => setEmail(e.target.value)}/></label>
+                <label>Password:<br /> <input name='updatePassword' type='text' value={password} onChange={e => setPassword(e.target.value)}/></label>
+                <label>Family:<br /> <input readOnly name='' type='text' value={userInfo.FamilyName}/></label>
+                <div></div>
+                <input name='submit-update' type='submit' value='Update Info'/>
+              </>
+            )}
+          </form>
 
-        <div className='profile-picture-div'>
-          <img src={pfp} alt='alt'/>
-          <div className='profile-picture-setting-div'>
-            <h2>Profile Picture</h2>
-            <p>Upload a new profile picture</p>
-            <input type='submit'/>
+          <div className='profile-picture-div'>
+            <img src={pfp} alt='alt'/>
+            <div className='profile-picture-setting-div'>
+              <div>
+                <h2>Profile Picture</h2>
+                <p>Upload a new profile picture</p>
+                <button onClick={handlePfpButton}>Chose A New Picture</button>
+              </div>
+            </div>
+          </div>
+
+          <div className='email-test-div'>
+            <div>
+              <h2>Test Email</h2>
+              <p>Send a test email to your email address to verify that it is correct.</p>
+            </div>
+            <button onClick={handleEmailTest}>Send Test Email</button>
           </div>
         </div>
 
-        <div className='email-test-div'>
-          <div>
-            <h2>Test Email</h2>
-            <p>Send a test email to your email address to verify that it is correct.</p>
-          </div>
-          <button onClick={handleEmailTest}>Send Test Email</button>
+        <div className='pfp-option-container'>
+          <img src={pfp} alt='alt'/>
+          <img src={pfp} alt='alt'/>
+
+          <img src={pfp} alt='alt'/>
+          <img src={pfp} alt='alt'/>
+
+          <img src={pfp} alt='alt'/>
+          <img src={pfp} alt='alt'/>
+
+          <img src={pfp} alt='alt'/>
+          <img src={pfp} alt='alt'/>
         </div>
       </div>
-    </div>
   );
 }
 

@@ -75,9 +75,41 @@
             .profile-picture-setting-div {
                 height: 100%;
                 width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
 
                 div {
-                    height: 5%;
+                    text-align: center;
+                }
+                h2 {
+                    font-size: 2.75vw;
+                    margin: 3% 0;
+                }
+                p {
+                    font-size: 1.5vw;
+                    margin: 0 0 5%;
+                }
+                button {
+                    width: 95%;
+                    padding: 10%;
+                    border-radius: 1vmax;
+                    border: none;
+    
+                    background-color: var(--taupe);
+                    color: var(--white);
+                    font-size: 1.25vw;
+                    transition-duration: 250ms;
+    
+                    &:hover {
+                        background-color: var(--taupe-light);
+                        scale: 1.03;
+                    }
+                    &:active {
+                        background-color: var(--taupe);
+                        scale: 0.98;
+                    }
                 }
             }
         }
@@ -100,11 +132,11 @@
             }
             p {
                 font-size: 1.5vw;
-                margin: 5% 0 6% 2%;
+                margin: 3% 0 6% 2%;
             }
             button {
                 width: 65%;
-                padding: 10%;
+                padding: 8%;
                 border-radius: 1vmax;
                 border: none;
 
@@ -123,5 +155,43 @@
                 }
             }
         }
+    }
+
+    .pfp-option-container{
+        position: absolute;
+        height: 70%;
+        width: 80%;
+        padding: 0 1%;
+        border-radius: 1vmax;
+        background-color: #111110e7;
+    
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        display: none;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        place-items: center;
+
+        column-gap: 1%;
+        row-gap: 0%;
+
+        img {
+            width: 90%;
+            aspect-ratio: 1 / 1;
+            border-radius: 0.8vmax;
+
+            &:hover {
+                scale: 1.03;
+                cursor: pointer;
+            }
+            &:active {
+                scale: 0.98;
+            }
+        }
+    }
+    .pfp-option-container.active {
+        display: grid;
     }
 }
