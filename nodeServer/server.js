@@ -51,6 +51,28 @@ app.get('/api/all', (req, res) => {
 
 
 
+//-------------------- PROFILE PICTURES --------------------//
+app.get('/api/pfp', (req, res) => {
+    const query = `SELECT * FROM ProfilePictures`;
+    const data = db.prepare(query).all();
+    res.send(data);
+});
+
+
+app.put('/api/updatePfp', async (req, res) => {
+    try {
+        const query = `UPDATE Users SET ProfilePictureID = ? WHERE UserID = ?`;
+        const data = db.prepare(query).run(req.body.ProfilePictureID, req.session.userId);
+        res.send({ message: 'Success' });
+    } catch (error) {
+        res.status(500).send({ message: `Error updating profile picture: ${error.message}` });
+        console.log(error)
+    }
+});
+
+
+
+
 //-------------------- FAMILY --------------------//
 app.post('/api/createFamily', async (req, res) => {
     try {

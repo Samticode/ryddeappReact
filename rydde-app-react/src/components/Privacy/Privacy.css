@@ -1,0 +1,62 @@
+.consent-form-container {
+    position: absolute;
+    bottom: -35%;
+    left: 0;
+    z-index: 50;
+
+    width: 100%;
+    height: 35%;
+    overflow: hidden;
+    border-radius: 2vmax 2vmax 0vmax 0vmax;
+    background-color: var(--beigh);
+
+    h1 {
+        color: var(--black);
+        font-size: 3vw;
+        margin: 0.5% 0 0 10%;
+    }
+    p {
+        color: var(--black);
+        font-size: 2vw;
+        margin: 0 0 0 10%;
+
+        a {
+            color: var(--green);
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    }
+}
+.consent-form-container.active {
+    bottom: 0;
+}
+
+.consent-button-toggler {
+    position: absolute;
+    bottom: 1%;
+    left: 0.5%;
+    z-index: 51;
+
+    font-size: 1.25vw;
+    color: var(--white);
+
+    width: 4%;
+    aspect-ratio: 1 / 1;
+    border-radius: 5vmax;
+    border: none;
+    background-color: var(--black);
+
+    &:hover {
+        background-color: var(--light-green);
+        transform: rotate(540deg);
+    }
+    &:active {
+        background-color: var(--green);
+        transform: rotate(180deg);
+    }
+}
+.consent-button-toggler.active {
+    bottom: 27%;
+}

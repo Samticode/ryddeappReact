@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
+
 import BackgroundThings from './components/BackgroundThings/BackgroundThings.js';
+import Privacy from './components/Privacy/Privacy.js';
 
 import Navigation from './components/Navigation/Navigation.js';
 
@@ -10,7 +12,7 @@ import Profile from './components/Profile/Profile.js';
 
 
 function App() {
-  const [siteNumber, setSiteNumber] = useState(4);
+  const [siteNumber, setSiteNumber] = useState(1);
   let siteComponent = null;
 
   if (siteNumber === 1) {
@@ -27,6 +29,7 @@ function App() {
     <>
       <Navigation siteNumber={siteNumber} setSiteNumber={setSiteNumber} />
       <BackgroundThings />
+      <Privacy />
 
       {siteComponent}
 

@@ -55,6 +55,13 @@
                 border: none;
                 background-color: var(--green);
                 color: var(--white);
+
+                &:hover {
+                    background-color: var(--light-green);
+                }
+                &:active {
+                    background-color: var(--green);
+                }
             }
         }
 
@@ -159,9 +166,9 @@
 
     .pfp-option-container{
         position: absolute;
-        height: 70%;
-        width: 80%;
-        padding: 0 1%;
+        height: 64%;
+        width: 70%;
+        padding: 1% 1%;
         border-radius: 1vmax;
         background-color: #111110e7;
     
@@ -174,7 +181,7 @@
         grid-template-rows: repeat(2, 1fr);
         place-items: center;
 
-        column-gap: 1%;
+        column-gap: 0%;
         row-gap: 0%;
 
         img {

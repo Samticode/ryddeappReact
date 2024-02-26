@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 
 function Profile() {
   const [userInfo, setUserInfo] = useState(null);
+  const [pfps, setPfps] = useState([]);
+
   const [userID, setUserId] = useState(null);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -13,6 +15,7 @@ function Profile() {
     async function getUserInfo() {
       const response = await fetch('/api/user');
       const data = await response.json();
+
       setUserInfo(data);
       setUserId(data.UserID);
       setUsername(data.Username);
@@ -21,6 +24,17 @@ function Profile() {
     }
     getUserInfo();
   }, []);
+
+  useEffect(() => {
+    async function getAllPfp() {
+      const response = await fetch('/api/pfp');
+      const data = await response.json();
+      setPfps(data);
+      console.log(pfps);
+    }
+    getAllPfp();
+  }, []);
+
 
   const handleUpdateSubmit = async e => {
     e.preventDefault();
@@ -73,60 +87,77 @@ function Profile() {
     pfpOptionContainer.classList.toggle('active');
   };
 
-  
+  const handleChangePfp = async event => {
+    event.preventDefault();
+    
+    const key = event.target.getAttribute('alt');
+    console.log(key);
+
+    const response = await fetch('/api/updatePfp', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ProfilePictureID: key
+      }),
+    });
+
+    const data = await response.json();
+    if (data.message === 'Success') {
+      alert('Profile picture updated');
+      handlePfpButton();
+    } else {
+      alert(data.message);
+    }
+  }
+
+
 
 
   return (
-      <div className="profile-section">
-        <h1>Profile</h1>
-        <div className="tile-grid-container">
-          <form className='user-info-div' onSubmit={handleUpdateSubmit}>
-            {userInfo && (
-              <>
-                <label>Username:<br /> <input name='updateUsername' type='text' value={username} onChange={e => setUsername(e.target.value)}/></label>
-                <label>Email:<br /> <input name='updateEmail' type='text' value={email} onChange={e => setEmail(e.target.value)}/></label>
-                <label>Password:<br /> <input name='updatePassword' type='text' value={password} onChange={e => setPassword(e.target.value)}/></label>
-                <label>Family:<br /> <input readOnly name='' type='text' value={userInfo.FamilyName}/></label>
-                <div></div>
-                <input name='submit-update' type='submit' value='Update Info'/>
-              </>
-            )}
-          </form>
+    <div className="profile-section">
+      <h1>Profile</h1>
+      <div className="tile-grid-container">
+        <form className='user-info-div' onSubmit={handleUpdateSubmit}>
+          {userInfo && (
+            <>
+              <label>Username:<br /> <input name='updateUsername' type='text' value={username} onChange={e => setUsername(e.target.value)}/></label>
+              <label>Email:<br /> <input name='updateEmail' type='text' value={email} onChange={e => setEmail(e.target.value)}/></label>
+              <label>Password:<br /> <input name='updatePassword' type='text' value={password} onChange={e => setPassword(e.target.value)}/></label>
+              <label>Family:<br /> <input readOnly name='' type='text' value={userInfo.FamilyName}/></label>
+              <div></div>
+              <input name='submit-update' type='submit' value='Update Info'/>
+            </>
+          )}
+        </form>
 
-          <div className='profile-picture-div'>
-            <img src={pfp} alt='alt'/>
-            <div className='profile-picture-setting-div'>
-              <div>
-                <h2>Profile Picture</h2>
-                <p>Upload a new profile picture</p>
-                <button onClick={handlePfpButton}>Chose A New Picture</button>
-              </div>
-            </div>
-          </div>
-
-          <div className='email-test-div'>
+        <div className='profile-picture-div'>
+          <img src={pfp} alt='alt'/>
+          <div className='profile-picture-setting-div'>
             <div>
-              <h2>Test Email</h2>
-              <p>Send a test email to your email address to verify that it is correct.</p>
+              <h2>Profile Picture</h2>
+              <p>Upload a new profile picture</p>
+              <button onClick={handlePfpButton}>Chose A New Picture</button>
             </div>
-            <button onClick={handleEmailTest}>Send Test Email</button>
           </div>
         </div>
 
-        <div className='pfp-option-container'>
-          <img src={pfp} alt='alt'/>
-          <img src={pfp} alt='alt'/>
-
-          <img src={pfp} alt='alt'/>
-          <img src={pfp} alt='alt'/>
-
-          <img src={pfp} alt='alt'/>
-          <img src={pfp} alt='alt'/>
-
-          <img src={pfp} alt='alt'/>
-          <img src={pfp} alt='alt'/>
+        <div className='email-test-div'>
+          <div>
+            <h2>Test Email</h2>
+            <p>Send a test email to your email address to verify that it is correct.</p>
+          </div>
+          <button onClick={handleEmailTest}>Send Test Email</button>
         </div>
       </div>
+
+      <div className='pfp-option-container'>
+        {pfps.map((pfp) => (
+          <img onClick={handleChangePfp} key={pfp.PictureID} src={pfp.ProfilePictureLink} alt={pfp.PictureID} />
+        ))}
+      </div>
+    </div>
   );
 }
 

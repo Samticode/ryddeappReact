@@ -12,7 +12,6 @@
   --davs-gray: #4D5359;
   
   --myrtle-green: #508484;
-  --mint: #79C99E;
   --green: #171D03;
   --light-green: #242d06;
   
@@ -21,7 +20,7 @@
   --brown: #56504E;
 }
 
-p, h1, h2, h3, h4, h5, h6, label, input{
+* {
   color: var(--white);
   font-family: "Quicksand", sans-serif;
 }
