@@ -206,9 +206,83 @@
 
 @media (max-width: 768px) {
     .profile-section {
+        margin: 0 0 0 0;
+
         h1 {
-            font-size: 6.5vw;
-            margin: 0 0 0 0.5em;
+            font-size:9vw;
+            margin: 1% 0 0 0.5em;
+        }
+
+        .tile-grid-container {
+            height: 93%;
+
+            .user-info-div {
+                height: 98.25%;
+                width: 95%;
+                grid-column: 1 / 10;
+                grid-row: 1 / 11;
+                
+                label {
+                    font-size: 4.5vw;
+                }
+                input {
+                    font-size: 3.5vw;
+                    width: 95%;
+                }
+                input[type='submit'] {
+                    width: 95%;
+                    padding: 10% 4%;
+                    font-size: 4vw;
+                }
+            }
+            .profile-picture-div {
+                height: 96%;
+                width: 95%;
+                grid-column: 10 / 21;
+                grid-row: 1 / 6;
+
+                grid-template-columns: none;
+                grid-template-rows: 1fr 41%;
+
+                .profile-picture-setting-div {
+
+                    h2 {
+                        font-size: 5vw;
+                        margin: 3% 0;
+                    }
+                    p {
+                        font-size: 3.5vw;
+                        margin: 0 0 5%;
+                    }
+                    button {
+                        width: 95%;
+                        padding: 8% 1%;
+                        font-size: 3.5vw;
+                    }
+                
+                }
+            }
+            .email-test-div {
+                height: 96%;
+                width: 95%;
+                grid-column: 10 / 21;
+                grid-row: 6 / 11;
+
+                grid-template-columns: none;
+                grid-template-rows: 1fr 1fr;
+
+                h2 {
+                    font-size: 6vw;
+                }
+                p {
+                    font-size: 3.25vw;
+                }
+                button {
+                    width: 85%;
+                    padding: 8% 1%;
+                    font-size: 3.5vw;
+                }
+            }
         }
     }
 }

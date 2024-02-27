@@ -1,12 +1,13 @@
 nav {
     position: absolute;
-    inset: 0;
+    top: 0;
 
     display: grid;
     place-items: center;
 
     background-color: rgba(240, 248, 255, 0.19);
     height: 7vh;
+    width: 100%;
 
     .nav-link-container {
         position: relative;
@@ -50,6 +51,8 @@ nav {
 @media (max-width: 768px) {
     nav {
         height: 8vh;
+        top: auto;
+        bottom: 0;
 
         .nav-link-container {
             width: 95%;
