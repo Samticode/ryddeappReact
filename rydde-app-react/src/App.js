@@ -18,7 +18,7 @@ function App() {
   if (siteNumber === 1) {
     siteComponent = <Family siteNumber={siteNumber} setSiteNumber={setSiteNumber}/>
   } else if (siteNumber === 2) {
-    siteComponent =  <User iteNumber={siteNumber} setSiteNumber={setSiteNumber}/>
+    siteComponent =  <User siteNumber={siteNumber} setSiteNumber={setSiteNumber}/>
   } else if (siteNumber === 3) {
     siteComponent =  <div>Site 3</div>
   } else if (siteNumber === 4) {
@@ -29,7 +29,8 @@ function App() {
     <>
       <Navigation siteNumber={siteNumber} setSiteNumber={setSiteNumber} />
       <BackgroundThings />
-      <Privacy />
+      
+      {(siteNumber === 1 || siteNumber === 2) && <Privacy siteNumber={siteNumber} setSiteNumber={setSiteNumber}/>}
 
       {siteComponent}
 

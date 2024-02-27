@@ -1,6 +1,6 @@
 import './Privacy.css'
 
-function Privacy() {
+function Privacy(props) {
     const handlePricacyToggle = event => {
         const consentForm = document.querySelector('.consent-form-container');
         consentForm.classList.toggle('active');
@@ -10,11 +10,11 @@ function Privacy() {
 
     return (
         <>
-            <button onClick={handlePricacyToggle} className='consent-button-toggler active'>§</button>
-            <div className='consent-form-container active'>
+            <button onClick={handlePricacyToggle} className='consent-button-toggler'>§</button>
+            <div className='consent-form-container'>
                 <h1>Privacy Policy</h1>
                 <p>Our Privacy Policy is in compliance with the General Data Protection Regulation (GDPR) (EU) 2016/679. This policy is effective as of 2021-02-19.
-                    If you do not wish to ave your personal information collected, saved and used. Click <a href='https://downloadmoreram.com/'>here</a>.</p>
+                    If you do not wish to ave your personal information collected, saved and used. Click <a target='_blank' href='https://downloadmoreram.com/'>here</a>.</p>
             </div>
         </>
     )
