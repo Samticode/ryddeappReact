@@ -1,0 +1,10 @@
+.homepage-main-section {
+    height: calc(100vh - 8vh);
+    width: 100%;
+    margin: 8vh 0 0 0;
+
+    .hompage-h1 {
+        font-size: 3.25vw;
+        margin: 0 0 0 0.5em;
+    }
+}

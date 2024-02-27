@@ -8,11 +8,12 @@ import Navigation from './components/Navigation/Navigation.js';
 
 import Family from './components/FamilySignUpForm/Family.js';
 import User from './components/User/User.js';
+import Homepage from './components/Homepage/Homepage.js';
 import Profile from './components/Profile/Profile.js';
 
 
 function App() {
-  const [siteNumber, setSiteNumber] = useState(1);
+  const [siteNumber, setSiteNumber] = useState(4);
   let siteComponent = null;
 
   if (siteNumber === 1) {
@@ -20,9 +21,9 @@ function App() {
   } else if (siteNumber === 2) {
     siteComponent =  <User siteNumber={siteNumber} setSiteNumber={setSiteNumber}/>
   } else if (siteNumber === 3) {
-    siteComponent =  <div>Site 3</div>
+    siteComponent =  <Homepage siteNumber={siteNumber} setSiteNumber={setSiteNumber}/>
   } else if (siteNumber === 4) {
-    siteComponent = <Profile />
+    siteComponent = <Profile siteNumber={siteNumber} setSiteNumber={setSiteNumber}/>
   }
 
   return (

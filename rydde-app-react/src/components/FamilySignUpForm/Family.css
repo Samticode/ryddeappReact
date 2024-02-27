@@ -76,3 +76,41 @@
         }
     }
 }
+
+
+@media (max-width: 768px) {
+    .changingForm {
+        height: 60%;
+        width: 80%;
+
+        .the-form-div {
+
+            .form-title {
+                margin: 3% 0% 0%;    
+                font-size: 7.5vw;
+            }
+            form {
+                height: 62%;
+
+                label {
+                    font-size: 4vw;
+                    line-height: 120%;
+                    width: 70%;
+                }
+                input {
+                    font-size: 4vw;
+                }
+                .submit-btn {
+                    padding: 3% 6%;
+                    margin: 6% 3%;
+                    font-size: 4.75vw;
+                }
+            }
+            .to-btn {
+                padding: 3% 6%;
+                margin: 6% 3%;
+                font-size: 4.75vw;
+            }
+        }
+    }
+}

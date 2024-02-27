@@ -1,7 +1,7 @@
 import './Profile.css'
 import React, { useEffect, useState } from 'react';
 
-function Profile() {
+function Profile(props) {
   const [userInfo, setUserInfo] = useState(null);
   const [pfps, setPfps] = useState([]);
 
@@ -107,6 +107,7 @@ function Profile() {
     if (data.message === 'Success') {
       alert('Profile picture updated');
       handlePfpButton();
+      window.location.reload();
     } else {
       alert(data.message);
     }

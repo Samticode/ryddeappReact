@@ -45,3 +45,18 @@ nav {
         }
     }
 }
+
+
+@media (max-width: 768px) {
+    nav {
+        height: 8vh;
+
+        .nav-link-container {
+            width: 95%;
+
+            .nav-link {
+                font-size: 3.5vw;
+            }
+        }
+    }
+}

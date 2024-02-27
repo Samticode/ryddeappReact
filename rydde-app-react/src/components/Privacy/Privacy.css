@@ -1,6 +1,6 @@
 .consent-form-container {
     position: absolute;
-    bottom: -35%;
+    bottom: -100%;
     left: 0;
     z-index: 50;
 
@@ -57,6 +57,32 @@
         transform: rotate(180deg);
     }
 }
-.consent-button-toggler.active {
-    bottom: 26.5%;
+
+
+@media (max-width: 768px) {
+    .consent-button-toggler {
+        font-size: 4vw;
+        width: 10%;
+        bottom: 0.5%;
+        left: 1%;
+    }
+
+    .consent-form-container {
+        height: 100%;
+        h1 {
+            font-size: 6.5vw;
+            margin: 80% 0 0 10%;
+        }
+        p {
+            font-size: 4vw;
+            margin: 5% 10% 0;
+        }
+    }
+
+
+
+
+    .consent-button-toggler.active {
+        bottom: 0.5%;
+    }
 }

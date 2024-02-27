@@ -202,3 +202,13 @@
         display: grid;
     }
 }
+
+
+@media (max-width: 768px) {
+    .profile-section {
+        h1 {
+            font-size: 6.5vw;
+            margin: 0 0 0 0.5em;
+        }
+    }
+}
