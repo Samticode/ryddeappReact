@@ -8,3 +8,18 @@
         margin: 0 0 0 0.5em;
     }
 }
+
+
+@media (max-width: 768px) {
+    .homepage-main-section {
+        height: calc(100vh - 8vh);
+        width: 100%;
+        margin: 0vh 0 8vh 0vh;
+
+        .hompage-h1 {
+            font-size: 9vw;
+            text-align: center;
+            margin: 0;
+        }
+    }
+}
