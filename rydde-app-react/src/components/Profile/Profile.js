@@ -115,7 +115,6 @@ function Profile(props) {
 
 
 
-
   return (
     <div className="profile-section">
       <h1>Profile</h1>
