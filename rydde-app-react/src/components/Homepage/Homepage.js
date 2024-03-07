@@ -38,6 +38,7 @@ function Homepage(props) {
                 <section className='tie-grid-container'>
                    <div className='grid-child leaderboard-container'>
                         <h2>Leaderboard</h2>
+
                         <p>1. Brown foxerman</p>
                         <p>2. Brown foxerman</p>
                         <p>3. Brown foxerman</p>
@@ -45,7 +46,10 @@ function Homepage(props) {
                         <p>5. Brown foxerman</p>
                    </div>
                    <div className='grid-child tasks-container'>
-                    
+                        <h2>Tasks</h2>
+                        <div className='tasks-container'>
+
+                        </div>
                    </div>
                 </section>
             </div>

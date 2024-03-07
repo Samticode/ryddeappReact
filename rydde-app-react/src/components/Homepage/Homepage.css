@@ -1,10 +1,10 @@
 .homepage-main-section {
-    height: calc(100vh - 7vh);
+    height: calc(100dvh - 7dvh);
     width: 100%;
-    margin: 7vh 0 0 0;
+    margin: 7dvh 0 0 0;
 
     .hompage-h1 {
-        font-size: 3.25vw;
+        font-size: 3.25dvw;
         margin: 0 0 0 0.5em;
     }
 
@@ -20,17 +20,24 @@
         gap: 1vmin;
 
         .grid-child {
+            position: relative;
             height: 100%;
             width: 100%;
             border-radius: 1vmax;
             overflow: hidden;
             background-color: var(--grid-color);
+
+            h2 {
+                font-size: 1.75dvw;
+                color: var(--beigh);
+                align-self: center;
+            }
         }
+
         .leaderboard-container {
-            position: relative;
             padding-top: 20%;
 
-            grid-column: 1 / span 4;
+            grid-column: 1 / span 6;
             grid-row: 1 / span 10 ;
 
             display: flex;
@@ -46,35 +53,54 @@
                 background-color: var(--green);
                 border-radius: 0.75vmax;
 
-                font-size: 1.75vw;
-                align-self: center;
-
                 display: grid;
                 place-items: center;
             }
             p {
                 font-weight: 200;
                 margin-left: 7%;
-                font-size: 1.2vw;
+                font-size: 1.2dvw;
             }
         }
+
         .tasks-container {
-            grid-column: 5 / span 13;
+            grid-column: 7 / span 13;
             grid-row: 1 / span 10;
 
+            h2 {
+                position: absolute;
+                top: 0.5%;
+                left: 50%;
+                transform: translate(-50%, 0);
+
+                height: 6%;
+                width: 99%;
+                background-color: var(--green);
+                border-radius: 0.75vmax;
+
+                display: grid;
+                place-items: center;
+            }
+            .tasks-container {
+                width: 100%;
+                height: calc(100% - 6vh);
+                background-color: blue;
+                margin-top: 6dvh;
+            }
         }
+
     }
 }
 
 
 @media (max-width: 768px) {
     .homepage-main-section {
-        height: calc(100vh - 8vh);
+        height: calc(100dvh - 8dvh);
         width: 100%;
-        margin: 0vh 0 8vh 0vh;
+        margin: 0dvh 0 8dvh 0dvh;
 
         .hompage-h1 {
-            font-size: 9vw;
+            font-size: 9dvw;
             text-align: center;
             margin: 0;
         }
