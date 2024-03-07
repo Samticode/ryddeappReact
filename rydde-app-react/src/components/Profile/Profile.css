@@ -1,5 +1,5 @@
 .tile-grid-container > div, .tile-grid-container > form {
-    background-color: #DAD9D242;
+    background-color: var(--grid-color);
     height: 95%;
     width: 95%;
     border-radius: 1vmax;

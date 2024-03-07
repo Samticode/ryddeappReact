@@ -1,11 +1,68 @@
 .homepage-main-section {
-    height: calc(100vh - 8vh);
+    height: calc(100vh - 7vh);
     width: 100%;
-    margin: 8vh 0 0 0;
+    margin: 7vh 0 0 0;
 
     .hompage-h1 {
         font-size: 3.25vw;
         margin: 0 0 0 0.5em;
+    }
+
+    .tie-grid-container {
+        height: 92%;
+        width: 100%;
+        padding: 0.5% 0.5%;
+
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(30, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        gap: 1vmin;
+
+        .grid-child {
+            height: 100%;
+            width: 100%;
+            border-radius: 1vmax;
+            overflow: hidden;
+            background-color: var(--grid-color);
+        }
+        .leaderboard-container {
+            position: relative;
+            padding-top: 20%;
+
+            grid-column: 1 / span 4;
+            grid-row: 1 / span 10 ;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            h2 {
+                position: absolute;
+                top: 0.5%;
+
+                height: 6%;
+                width: 96%;
+                background-color: var(--green);
+                border-radius: 0.75vmax;
+
+                font-size: 1.75vw;
+                align-self: center;
+
+                display: grid;
+                place-items: center;
+            }
+            p {
+                font-weight: 200;
+                margin-left: 7%;
+                font-size: 1.2vw;
+            }
+        }
+        .tasks-container {
+            grid-column: 5 / span 13;
+            grid-row: 1 / span 10;
+
+        }
     }
 }
 
@@ -20,6 +77,10 @@
             font-size: 9vw;
             text-align: center;
             margin: 0;
+        }
+
+        .tile-grid-container {
+            height: 93%;
         }
     }
 }
