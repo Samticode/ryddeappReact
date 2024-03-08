@@ -49,7 +49,7 @@
                 top: 0.5%;
 
                 height: 6%;
-                width: 96%;
+                width: 98%;
                 background-color: var(--green);
                 border-radius: 0.75vmax;
 
@@ -84,8 +84,63 @@
             .tasks-container {
                 width: 100%;
                 height: calc(100% - 6vh);
-                background-color: blue;
                 margin-top: 6dvh;
+
+                display: flex;
+                justify-content: space-around;
+
+                section {
+                    width: 99%;
+                    max-height: 17.5%;
+                    border-radius: 0.75vmax;
+                    overflow: hidden;
+                    
+                    form {
+                        height: 100%;
+                        width: 100%;
+                        background-color: var(--grid-color);
+
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        input {
+                            height: 100%;
+                            width: 50%;
+                            border: none;
+                            background-color: transparent;
+                            padding-left: 3.25%;
+                            
+                            outline: none;
+
+                            font-size: 2.75dvw;
+                            cursor: default;
+                        }
+                        button {
+                            height: 75%;
+                            aspect-ratio: 1 / 1;
+                            border-radius: 1vmax;
+                            background-color: var(--black);
+                            margin-right: 2.25%;
+
+                            border: none;
+
+                            &:hover {
+                                border-radius: 0.75vmax;
+                                scale: 1.1;
+                            }
+                            &:active {
+                                border-radius: 0.75vmax;
+                                scale: 1;
+                            }
+
+                            i {
+                                color: var(--white);
+                                font-size: 3dvw;
+                            }
+                        }
+                    }
+                }
             }
         }
 

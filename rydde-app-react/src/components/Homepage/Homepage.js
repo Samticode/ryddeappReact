@@ -12,29 +12,60 @@ function Homepage(props) {
     const [password, setPassword] = useState('');
     const [pfp, setPfp] = useState('');
 
+    const [chores, setChores] = useState([]);
+
+
+    // useEffect(() => {
+    //     async function getUserInfo() {
+    //         const response = await fetch('/api/user');
+    //         const data = await response.json();
+
+    //         console.log(data);
+
+    //         setUserInfo(data);
+    //         setUserId(data.UserID);
+    //         setUsername(data.Username);
+    //         setEmail(data.Email);
+    //         setPfp(data.ProfilePictureLink);
+    //     }
+    //     getUserInfo();
+    // }, []);
 
     useEffect(() => {
-        async function getUserInfo() {
-            const response = await fetch('/api/user');
-            const data = await response.json();
+        async function getChores() {
+            const response = await fetch('/api/undoneChores');
+            let data = await response.json();
 
-            console.log(data);
-
-            setUserInfo(data);
-            setUserId(data.UserID);
-            setUsername(data.Username);
-            setEmail(data.Email);
-            setPfp(data.ProfilePictureLink);
+            data = data.map((chore) => {
+                return {
+                    choreId: chore.ChoreID,
+                    choreName: chore.ChoreName,
+                    choreDescription: chore.Description,
+                    assignedUserID: chore.AssignedUserID,
+                    assignedUserName: chore.Username
+                }
+            });
+            // console.log(data);
+            setChores(data);
         }
-        getUserInfo();
+        getChores();
     }, []);
 
+
+
+    const handleTaskSubmit = async (event) => {
+        event.preventDefault();
+    
+        // Here you can handle the task submission
+    // console.log(task);
+      };
 
 
     return(
         <>
             <div className='homepage-main-section'>
                 <h1 className='hompage-h1'>Welcome Back {username}</h1>
+
                 <section className='tie-grid-container'>
                    <div className='grid-child leaderboard-container'>
                         <h2>Leaderboard</h2>
@@ -48,7 +79,13 @@ function Homepage(props) {
                    <div className='grid-child tasks-container'>
                         <h2>Tasks</h2>
                         <div className='tasks-container'>
+                            <section className='task'>
+                                <form onSubmit={handleTaskSubmit}>
+                                    <input type='text' value={'Wash man'} readOnly/>
 
+                                    <button type='submit'><i class="fa-solid fa-check"></i></button>
+                                </form>
+                            </section>
                         </div>
                    </div>
                 </section>

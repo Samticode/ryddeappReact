@@ -73,6 +73,28 @@ app.put('/api/updatePfp', async (req, res) => {
 
 
 
+//-------------------- CHORES --------------------//
+app.get('/api/undoneChores', (req, res) => {
+    const query = `
+        SELECT 
+            Chores.ChoreID, 
+            Chores.ChoreName, 
+            Chores.Description, 
+            Chores.AssignedUserID, 
+            Chores.Done, 
+            Users.UserID, 
+            Users.Username 
+        FROM Chores 
+        LEFT JOIN Users ON Chores.AssignedUserID = Users.UserID
+        WHERE Chores.Done = 0
+    `;
+    const data = db.prepare(query).all();
+    res.send(data);
+});
+
+
+
+
 //-------------------- FAMILY --------------------//
 app.post('/api/createFamily', async (req, res) => {
     try {
