@@ -86,12 +86,20 @@
                 height: calc(100% - 6vh);
                 margin-top: 6dvh;
 
-                display: flex;
-                justify-content: space-around;
+                overflow-y: scroll;
+
+                ::-webkit-scrollbar {
+                    display: none;
+                  }
+                
+                /* Hide scrollbar for IE, Edge and Firefox */
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
 
                 section {
                     width: 99%;
-                    max-height: 17.5%;
+                    height: 17.5%;
+                    margin: 2% auto;
                     border-radius: 0.75vmax;
                     overflow: hidden;
                     

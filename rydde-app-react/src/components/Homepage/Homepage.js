@@ -45,7 +45,7 @@ function Homepage(props) {
                     assignedUserName: chore.Username
                 }
             });
-            // console.log(data);
+            console.log(data);
             setChores(data);
         }
         getChores();
@@ -53,12 +53,11 @@ function Homepage(props) {
 
 
 
-    const handleTaskSubmit = async (event) => {
+    const handleTaskSubmit = async (event, task) => {
         event.preventDefault();
-    
-        // Here you can handle the task submission
-    // console.log(task);
-      };
+
+        console.log(task);
+    };
 
 
     return(
@@ -79,13 +78,21 @@ function Homepage(props) {
                    <div className='grid-child tasks-container'>
                         <h2>Tasks</h2>
                         <div className='tasks-container'>
-                            <section className='task'>
+                            {chores.map((chore) => (
+                                <section key={chore.choreID} className='task'>
+                                    <form onSubmit={(event) => handleTaskSubmit(event, chore.choreId)}>
+                                        <input type='text' value={chore.choreName} readOnly/>
+                                        <button type='submit'><i className="fa-solid fa-check"></i></button>
+                                    </form>
+                                </section>
+                            ))}
+                            {/* <section className='task'>
                                 <form onSubmit={handleTaskSubmit}>
                                     <input type='text' value={'Wash man'} readOnly/>
 
                                     <button type='submit'><i class="fa-solid fa-check"></i></button>
                                 </form>
-                            </section>
+                            </section> */}
                         </div>
                    </div>
                 </section>
