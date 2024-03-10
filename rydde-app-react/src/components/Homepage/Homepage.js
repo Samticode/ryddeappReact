@@ -56,9 +56,14 @@ function Homepage(props) {
     const handleTaskSubmit = async (event, task) => {
         event.preventDefault();
 
-        console.log(task);
+        alert(task);
     };
 
+    const handleShowMore = async (e, choreDes) => {
+        e.preventDefault();
+
+        alert(`Task Description: \n${choreDes}`)
+    };
 
     return(
         <>
@@ -82,7 +87,10 @@ function Homepage(props) {
                                 <section key={chore.choreID} className='task'>
                                     <form onSubmit={(event) => handleTaskSubmit(event, chore.choreId)}>
                                         <input type='text' value={chore.choreName} readOnly/>
-                                        <button type='submit'><i className="fa-solid fa-check"></i></button>
+                                        <div>
+                                            <button onClick={(event) => handleShowMore(event, chore.choreDescription)} className='show-more-button'><i class="fa-solid fa-info"></i></button>
+                                            <button type='submit'><i className="fa-solid fa-check"></i></button>
+                                        </div>
                                     </form>
                                 </section>
                             ))}

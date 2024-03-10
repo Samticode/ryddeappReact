@@ -98,7 +98,7 @@
 
                 section {
                     width: 99%;
-                    height: 17.5%;
+                    height: 12%;
                     margin: 2% auto;
                     border-radius: 0.75vmax;
                     overflow: hidden;
@@ -124,34 +124,43 @@
                             font-size: 2.75dvw;
                             cursor: default;
                         }
-                        button {
-                            height: 75%;
-                            aspect-ratio: 1 / 1;
-                            border-radius: 1vmax;
-                            background-color: var(--black);
-                            margin-right: 2.25%;
 
-                            border: none;
+                        div {
+                            height: 100%;
+                            width: 25%;
 
-                            &:hover {
-                                border-radius: 0.75vmax;
-                                scale: 1.1;
-                            }
-                            &:active {
-                                border-radius: 0.75vmax;
-                                scale: 1;
-                            }
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
 
-                            i {
-                                color: var(--white);
-                                font-size: 3dvw;
+                            button {
+                                height: 75%;
+                                aspect-ratio: 1 / 1;
+                                border-radius: 1vmax;
+                                background-color: var(--black);
+
+    
+                                border: none;
+    
+                                &:hover {
+                                    border-radius: 0.75vmax;
+                                    scale: 1.075;
+                                }
+                                &:active {
+                                    border-radius: 0.75vmax;
+                                    scale: 1;
+                                }
+    
+                                i {
+                                    color: var(--white);
+                                    font-size: 3dvw;
+                                }
                             }
                         }
                     }
                 }
             }
         }
-
     }
 }
 
