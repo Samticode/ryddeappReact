@@ -82,15 +82,19 @@ app.get('/api/undoneChores', (req, res) => {
             Chores.Description, 
             Chores.AssignedUserID, 
             Chores.Done, 
+            Chores.AssignedFamilyID,
             Users.UserID, 
             Users.Username 
         FROM Chores 
         LEFT JOIN Users ON Chores.AssignedUserID = Users.UserID
-        WHERE Chores.Done = 0
+        WHERE Chores.Done = 0 AND Chores.AssignedFamilyID = ?
     `;
-    const data = db.prepare(query).all();
+    const data = db.prepare(query).all(req.session.familyId);
     res.send(data);
 });
+
+
+
 
 
 

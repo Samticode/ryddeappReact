@@ -37,7 +37,7 @@
         .leaderboard-container {
             padding-top: 20%;
 
-            grid-column: 1 / span 6;
+            grid-column: 1 / span 7;
             grid-row: 1 / span 10 ;
 
             display: flex;
@@ -64,7 +64,7 @@
         }
 
         .tasks-container {
-            grid-column: 7 / span 13;
+            grid-column: 8 / span 13;
             grid-row: 1 / span 10;
 
             h2 {
@@ -139,6 +139,8 @@
                                 border-radius: 1vmax;
                                 background-color: var(--black);
 
+                                display: grid;
+                                place-items: center;
     
                                 border: none;
     
@@ -154,6 +156,9 @@
                                 i {
                                     color: var(--white);
                                     font-size: 3dvw;
+                                }
+                                .fa-angle-down {
+                                    font-size: 2.5dvw;
                                 }
                             }
                         }
