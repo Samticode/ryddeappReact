@@ -81,12 +81,14 @@
                 display: grid;
                 place-items: center;
             }
-            .tasks-container {
+            .taskss-container {
                 width: 100%;
                 height: calc(100% - 6vh);
                 margin-top: 6dvh;
 
                 overflow-y: scroll;
+
+
 
                 ::-webkit-scrollbar {
                     display: none;
@@ -96,12 +98,15 @@
                 -ms-overflow-style: none;  /* IE and Edge */
                 scrollbar-width: none;  /* Firefox */
 
-                section {
-                    width: 99%;
-                    height: 12%;
-                    margin: 2% auto;
+                .task {
+                    width: 32%;
+                    height: 32%;
                     border-radius: 0.75vmax;
+
                     overflow: hidden;
+                    display: inline-block;
+
+                    margin: 0.65%;
                     
                     form {
                         height: 100%;
@@ -109,25 +114,26 @@
                         background-color: var(--grid-color);
 
                         display: flex;
+                        flex-direction: column;
                         justify-content: space-between;
                         align-items: center;
 
                         input {
-                            height: 100%;
-                            width: 50%;
+                            height: 25%;
+                            width: 100%;
                             border: none;
                             background-color: transparent;
-                            padding-left: 3.25%;
                             
                             outline: none;
 
                             font-size: 2.75dvw;
                             cursor: default;
+                            text-align: center;
                         }
 
                         div {
-                            height: 100%;
-                            width: 25%;
+                            height: 45%;
+                            width: 100%;
 
                             display: flex;
                             justify-content: space-around;

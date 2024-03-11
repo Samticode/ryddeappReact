@@ -1,5 +1,6 @@
 import './Homepage.css'
 import React, { useEffect, useState } from 'react';
+import NewTask from './NewTask/NewTask';
 
 
 function Homepage(props) {
@@ -82,7 +83,7 @@ function Homepage(props) {
                    </div>
                    <div className='grid-child tasks-container'>
                         <h2>Tasks</h2>
-                        <div className='tasks-container'>
+                        <div className='taskss-container'>
                             {chores.map((chore) => (
                                 <section key={chore.choreID} className='task'>
                                     <form onSubmit={(event) => handleTaskSubmit(event, chore.choreId)}>
@@ -104,6 +105,7 @@ function Homepage(props) {
                         </div>
                    </div>
                 </section>
+                <NewTask />
             </div>
         </>
     )
