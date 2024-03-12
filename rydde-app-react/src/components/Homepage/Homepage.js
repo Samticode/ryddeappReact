@@ -42,6 +42,7 @@ function Homepage(props) {
                     choreId: chore.ChoreID,
                     choreName: chore.ChoreName,
                     choreDescription: chore.Description,
+                    chorePoints: chore.Points,
                     assignedUserID: chore.AssignedUserID,
                     assignedUserName: chore.Username
                 }
@@ -87,7 +88,8 @@ function Homepage(props) {
                             {chores.map((chore) => (
                                 <section key={chore.choreID} className='task'>
                                     <form onSubmit={(event) => handleTaskSubmit(event, chore.choreId)}>
-                                        <input type='text' value={chore.choreName} readOnly/>
+                                        <input className='input-task-name' type='text' value={`${chore.choreName}`} readOnly/>
+                                        <input className='input-task-point' type='text' value={`${chore.chorePoints} points`} readOnly/>
                                         <div>
                                             <button onClick={(event) => handleShowMore(event, chore.choreDescription)} className='show-more-button'><i class="fa-solid fa-info"></i></button>
                                             <button type='submit'><i className="fa-solid fa-check"></i></button>
@@ -104,8 +106,8 @@ function Homepage(props) {
                             </section> */}
                         </div>
                    </div>
+                   <NewTask />
                 </section>
-                <NewTask />
             </div>
         </>
     )

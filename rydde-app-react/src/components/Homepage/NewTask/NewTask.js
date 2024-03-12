@@ -8,12 +8,28 @@ function NewTask() {
         setIsActive(!isActive);
     };
 
-    
+
+    const handleNewTask = async (event) => {
+        event.preventDefault();
+        
+        const body = {
+            task: event.target.taskName.value
+        };
+        alert('Task: ' + body.task);
+    };
+
     return ( 
         <>
-            <button className='btnbtn' onClick={toggleActive}>new task</button>
+            <div className={`new-task-container ${isActive ? 'active' : ''}`}>
+                <form onSubmit={handleNewTask}>
+                    <input name='taskName' type='text' placeholder='Task Name' required/><br />
+                    <input name='taskDescription' type='text' placeholder='Task Description' required/><br />
+                    <input name='taskPoints' type='number' placeholder='Task Points' required/> <br />
+                    <input type='submit' />
+                </form>
+            </div>
 
-            <div className={`new-task-container ${isActive ? 'active' : ''}`}></div>
+            <button className='new-task-button' onClick={toggleActive}>New Task</button>
         </>
      );
 }

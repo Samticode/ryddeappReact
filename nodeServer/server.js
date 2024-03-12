@@ -81,8 +81,9 @@ app.get('/api/undoneChores', (req, res) => {
             Chores.ChoreName, 
             Chores.Description, 
             Chores.AssignedUserID, 
-            Chores.Done, 
             Chores.AssignedFamilyID,
+            Chores.Done,
+            Chores.Points,
             Users.UserID, 
             Users.Username 
         FROM Chores 
@@ -214,6 +215,9 @@ app.put('/api/updateUser', async (req, res) => {
         res.status(500).send({ message: `Error updating user: ${error.message}` });
     }
 });
+
+
+
 
 app.post('/api/testMail', async (req, res) => {
     const transporter = nodemailer.createTransport({

@@ -119,21 +119,29 @@
                         align-items: center;
 
                         input {
-                            height: 25%;
+
                             width: 100%;
                             border: none;
                             background-color: transparent;
                             
                             outline: none;
 
-                            font-size: 2.75dvw;
+                            font-size: 2.5dvw;
                             cursor: default;
                             text-align: center;
                         }
+                        .input-task-name {
+                            margin-top: 8%;
+                            font-weight: 500;
+                        }
+                        .input-task-point {
+                            font-weight: 200;
+                        }
 
                         div {
-                            height: 45%;
+                            height: 40%;
                             width: 100%;
+                            margin-bottom: 5%;
 
                             display: flex;
                             justify-content: space-around;
@@ -161,7 +169,7 @@
     
                                 i {
                                     color: var(--white);
-                                    font-size: 3dvw;
+                                    font-size: 2.5dvw;
                                 }
                                 .fa-angle-down {
                                     font-size: 2.5dvw;
@@ -170,6 +178,27 @@
                         }
                     }
                 }
+            }
+        }
+        .new-task-button {
+            grid-column: 28 / span 3;
+            grid-row: 9 / span  2;
+            z-index: 999;
+
+            height: 100%;
+            width: 100%;
+            background-color: var(--grid-color);
+            
+            border-radius: 1vmax;
+            border: none;
+            color: var(--white);
+            font-size: 1.5dvw;
+
+            &:hover {
+                scale: 1.075;
+            }
+            &:active {
+                scale: 1;
             }
         }
     }
