@@ -37,7 +37,7 @@
         .leaderboard-container {
             padding-top: 20%;
 
-            grid-column: 1 / span 7;
+            grid-column: 1 / span 9;
             grid-row: 1 / span 10 ;
 
             display: flex;
@@ -64,7 +64,7 @@
         }
 
         .tasks-container {
-            grid-column: 8 / span 13;
+            grid-column: 10 / span 18;
             grid-row: 1 / span 10;
 
             h2 {
@@ -99,14 +99,14 @@
                 scrollbar-width: none;  /* Firefox */
 
                 .task {
-                    width: 32%;
-                    height: 32%;
+                    width: 24%;
+                    height: 35%;
                     border-radius: 0.75vmax;
 
                     overflow: hidden;
                     display: inline-block;
 
-                    margin: 0.65%;
+                    margin: 0.45%;
                     
                     form {
                         height: 100%;
@@ -180,14 +180,12 @@
                 }
             }
         }
-        .new-task-button {
-            grid-column: 28 / span 3;
-            grid-row: 9 / span  2;
+        .btn-style {
             z-index: 999;
 
             height: 100%;
             width: 100%;
-            background-color: var(--grid-color);
+            background-color: var(--taupe);
             
             border-radius: 1vmax;
             border: none;
@@ -195,11 +193,19 @@
             font-size: 1.5dvw;
 
             &:hover {
-                scale: 1.075;
+                scale: 1.03;
             }
             &:active {
                 scale: 1;
             }
+        }
+        .edit-task-button {
+            grid-column: 28 / span 3;
+            grid-row: 6 / span  5;
+        }
+        .new-task-button {
+            grid-column: 28 / span 3;
+            grid-row: 1 / span 5;
         }
     }
 }

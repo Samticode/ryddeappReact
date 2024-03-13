@@ -95,8 +95,16 @@ app.get('/api/undoneChores', (req, res) => {
 });
 
 
-
-
+app.post('/api/createChore', async (req, res) => {
+    try{
+        const query = `INSERT INTO Chores (ChoreName, Description, AssignedUserID, AssignedFamilyID, Done, Points) VALUES (?, ?, ?, ?, ?, ?)`;
+        db.prepare(query).run(req.body.task, req.body.description, null, req.session.familyId, 0, req.body.points);
+        res.send({ message: 'Success' });
+    } catch (error) {
+        res.status(500).send({ message: error });
+        console.log(error)
+    }
+});
 
 
 
@@ -151,7 +159,7 @@ app.post('/api/loginFamily', async (req, res) => {
 //-------------------- USER --------------------//
 app.get('/api/user', (req, res) => {
     const query = `
-        SELECT Users.UserID, Users.Username, Users.Email, Users.Password, Users.IsParent, Users.FamilyID, Users.ProfilePictureID, Families.FamilyName, 
+        SELECT Users.UserID, Users.Username, Users.Email, Users.IsParent, Users.FamilyID, Users.ProfilePictureID, Families.FamilyName, 
         CASE WHEN Users.ProfilePictureID IS NULL THEN NULL ELSE ProfilePictures.ProfilePictureLink END AS ProfilePictureLink
         FROM Users
         INNER JOIN Families ON Users.FamilyID = Families.FamilyID

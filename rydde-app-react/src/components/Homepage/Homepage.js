@@ -12,25 +12,27 @@ function Homepage(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [pfp, setPfp] = useState('');
+    const [isParent, setIsParent] = useState(0);
 
     const [chores, setChores] = useState([]);
 
 
-    // useEffect(() => {
-    //     async function getUserInfo() {
-    //         const response = await fetch('/api/user');
-    //         const data = await response.json();
+    useEffect(() => {
+        async function getUserInfo() {
+            const response = await fetch('/api/user');
+            const data = await response.json();
 
-    //         console.log(data);
+            // console.log(data);
 
-    //         setUserInfo(data);
-    //         setUserId(data.UserID);
-    //         setUsername(data.Username);
-    //         setEmail(data.Email);
-    //         setPfp(data.ProfilePictureLink);
-    //     }
-    //     getUserInfo();
-    // }, []);
+            setUserInfo(data);
+            setUserId(data.UserID);
+            setUsername(data.Username);
+            setEmail(data.Email);
+            setPfp(data.ProfilePictureLink);
+            setIsParent(data.IsParent);
+        }
+        getUserInfo();
+    }, []);
 
     useEffect(() => {
         async function getChores() {
@@ -47,12 +49,10 @@ function Homepage(props) {
                     assignedUserName: chore.Username
                 }
             });
-            console.log(data);
             setChores(data);
         }
         getChores();
     }, []);
-
 
 
     const handleTaskSubmit = async (event, task) => {
@@ -66,6 +66,7 @@ function Homepage(props) {
 
         alert(`Task Description: \n${choreDes}`)
     };
+
 
     return(
         <>

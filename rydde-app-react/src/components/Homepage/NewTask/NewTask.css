@@ -12,10 +12,35 @@
 
 
     form {
-        height: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        height: 80%;
         width: 25%;
-        border: 2px solid;
-        margin: 0 10%;
+        margin: 0 5%;
+
+        h2 {
+            font-size: 3dvw;
+            margin: 2% 0;
+        }
+        div {
+            width: 100%;
+            height: 80%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: left;
+
+            input {
+                width: 70%;
+                font-size: 2dvw;
+                margin-left: 5%;
+            }
+        }
+        button {
+            color: black;
+        }
     }
 }
 
