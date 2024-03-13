@@ -1,0 +1,98 @@
+.taskss-container {
+    width: 100%;
+    height: calc(100% - 6vh);
+    margin-top: 6dvh;
+
+    overflow-y: scroll;
+
+
+
+    ::-webkit-scrollbar {
+        display: none;
+      }
+    
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    .task {
+        width: 24%;
+        height: 35%;
+        border-radius: 0.75vmax;
+
+        overflow: hidden;
+        display: inline-block;
+
+        margin: 0.45%;
+        
+        form {
+            height: 100%;
+            width: 100%;
+            background-color: var(--grid-color);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            input {
+
+                width: 100%;
+                border: none;
+                background-color: transparent;
+                
+                outline: none;
+
+                font-size: 2.5dvw;
+                cursor: default;
+                text-align: center;
+            }
+            .input-task-name {
+                margin-top: 8%;
+                font-weight: 500;
+            }
+            .input-task-point {
+                font-weight: 200;
+            }
+
+            div {
+                height: 40%;
+                width: 100%;
+                margin-bottom: 5%;
+
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                button {
+                    height: 75%;
+                    aspect-ratio: 1 / 1;
+                    border-radius: 1vmax;
+                    background-color: var(--black);
+
+                    display: grid;
+                    place-items: center;
+
+                    border: none;
+
+                    &:hover {
+                        border-radius: 0.75vmax;
+                        scale: 1.075;
+                    }
+                    &:active {
+                        border-radius: 0.75vmax;
+                        scale: 1;
+                    }
+
+                    i {
+                        color: var(--white);
+                        font-size: 2.5dvw;
+                    }
+                    .fa-angle-down {
+                        font-size: 2.5dvw;
+                    }
+                }
+            }
+        }
+    }
+}
