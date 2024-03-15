@@ -95,7 +95,28 @@ app.get('/api/undoneChores', (req, res) => {
 });
 
 
+app.put('/api/editChore', async (req, res) => {
+    try {
+        const query = `UPDATE Chores SET ChoreName = ?, Description = ?, Points = ? WHERE ChoreID = ?`;
+        const data = db.prepare(query).run(req.body.task, req.body.description, req.body.points, req.body.choreId);
+        res.send({ message: 'Success' });
+    } catch (error) {
+        res.status(500).send({ message: error });
+        console.log(error)
+    }
+});
 
+
+app.delete('/api/deleteChore', async (req, res) => {
+    try {
+        const query = `DELETE FROM Chores WHERE ChoreID = ?`;
+        const data = db.prepare(query).run(req.body.choreId);
+        res.send({ message: 'Success' });
+    } catch (error) {
+        res.status(500).send({ message: error });
+        console.log(error)
+    }
+});
 
 
 app.post('/api/createChore', async (req, res) => {
