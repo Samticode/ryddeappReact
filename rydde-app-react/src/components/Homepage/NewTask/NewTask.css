@@ -15,6 +15,7 @@
         position: absolute;
         top: 50%;
         transform: translate(0, -50%);
+
         height: 80%;
         width: 25%;
         margin: 0 5%;
@@ -40,6 +41,103 @@
         }
         button {
             color: black;
+            border-radius: 1vmax;
+            padding: 1% 5%;
+            font-size: 1.5dvw;
+        }
+    }
+
+    .edit-task-screen {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+
+        height: 80%;
+        width: 80%;
+        margin: 0 5%;
+
+        display: grid;
+        grid-template-columns: 1.5fr 3fr;
+        place-items: center;
+
+        div {
+            height: 100%;
+            width: 100%;
+        }
+
+        .edit-panel-div {
+            
+            h2 {
+                font-size: 3dvw;
+                margin: 2% 0;
+            }
+            .edit-task-form {
+                margin: 0 0%;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: left;
+                
+                button {
+                    color: black;
+                    border-radius: 1vmax;
+                    width: 70%;
+                }
+                .btn-delete {
+                    background-color: #fabeb2;
+
+                    border: none;
+                    width: 70%;
+                    height: 7%;
+
+                    &:hover {
+                        background-color: #f5a89f;
+                    }
+                }
+                input {
+                    width: 80%;
+                    font-size: 2dvw;
+                    margin-left: 5%;
+                }
+            }
+        }
+        .view-task-div {
+            background-color: var(--white);
+
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+
+                td, th {
+                    text-align: center;
+                    color: var(--black);
+                    border: solid 1px var(--black);
+                }
+                .body-table-row {
+
+                    &:hover {
+                        background-color: var(--beigh);
+                    }
+                    &:active {
+                        background-color: var(--white);
+                    }
+                }
+                th {
+                    height: 5%;
+                    font-size: 1.75dvw;
+                    font-weight: 800;
+                }
+                td {
+                    font-size: 1.5dvw;
+                    
+                    &:hover {
+                        cursor: pointer;
+
+                    }
+                }
+            }
         }
     }
 }

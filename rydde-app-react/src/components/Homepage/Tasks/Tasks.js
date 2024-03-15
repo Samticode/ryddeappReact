@@ -40,8 +40,7 @@ function Tasks(props) {
 
 
         return ( 
-
-            <div className='grid-child tasks-container'>
+            <div className='grid-child tasks-container' style={props.isParent === 0 ? { gridColumn: '10 / span 21' } : {}}>
                 <h2>Tasks</h2>
                 <div className='taskss-container'>
                     {chores.map((chore) => (
