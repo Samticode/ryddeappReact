@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './NewTask.css';
 
-function NewTask() {
+function NewTask(props) {
     const [isActive, setIsActive] = useState(false);
     const [whichTaskScreen, setWhichTaskScreen] = useState(0);
     const [tasks, setTasks] = useState([]);
@@ -60,6 +60,7 @@ function NewTask() {
 
             toggleActive();
             window.location.reload();
+            props.setSiteNumber(4);
         } else {
             alert('Error Adding Task');
         }
@@ -93,8 +94,7 @@ function NewTask() {
     };
 
     const handleDeleteTask = async (event) => {
-        if (!window.confirm('Are you sure you want to delete this task?')) {
-
+        if (window.confirm('Are you sure you want to delete this task?')) {
             event.preventDefault();
             
             const response = await fetch('/api/deleteChore', {

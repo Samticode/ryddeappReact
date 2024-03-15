@@ -53,7 +53,7 @@ function Homepage(props) {
                         <p>5. Brown foxerman</p>
                     </div>
                     <Tasks isParent={isParent} setIsParent={setIsParent}/>
-                    <NewTask />
+                    <NewTask siteNumber={props.siteNumber} setSiteNumber={props.setSiteNumber}/>
                 </section>
             </div>
         )

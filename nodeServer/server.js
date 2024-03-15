@@ -119,6 +119,18 @@ app.delete('/api/deleteChore', async (req, res) => {
 });
 
 
+app.put('/api/finishChore', async (req, res) => {
+    try {
+        const query = `UPDATE Chores SET Done = 1, AssignedUserID = ? WHERE ChoreID = ?`;
+        const data = db.prepare(query).run(req.session.userId, req.body.choreId);
+        res.send({ message: 'Success' });
+    } catch (error) {
+        res.status(500).send({ message: error });
+        console.log(error)
+    }
+});
+
+
 app.post('/api/createChore', async (req, res) => {
     try{
         const query = `INSERT INTO Chores (ChoreName, Description, AssignedUserID, AssignedFamilyID, Done, Points) VALUES (?, ?, ?, ?, ?, ?)`;

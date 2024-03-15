@@ -29,7 +29,26 @@ function Tasks(props) {
     const handleTaskSubmit = async (event, task) => {
         event.preventDefault();
 
-        alert(task);
+        if (window.confirm('Are you sure you want to finish this task?')) {
+            const response = await fetch('/api/finishChore', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    choreId: task
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.message === 'Success') {
+                alert('Task finished!');
+                window.location.reload();
+            } else {
+                alert('Error finishing task');
+            }
+        }
     };
 
     const handleShowMore = async (e, choreDes) => {
