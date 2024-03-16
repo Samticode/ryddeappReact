@@ -1,6 +1,7 @@
 import './Homepage.css'
 import React, { useEffect, useState } from 'react';
 
+import Leaderboard from './Leaderboard/Leaderboard';
 import NewTask from './NewTask/NewTask';
 import Tasks from './Tasks/Tasks';
 
@@ -43,15 +44,7 @@ function Homepage(props) {
                 <h1 className='hompage-h1'>Welcome Back {username}</h1>
 
                 <section className='tie-grid-container'>
-                    <div className='grid-child leaderboard-container'>
-                        <h2>Leaderboard</h2>
-
-                        <p>1. Brown foxerman</p>
-                        <p>2. Brown foxerman</p>
-                        <p>3. Brown foxerman</p>
-                        <p>4. Brown foxerman</p>
-                        <p>5. Brown foxerman</p>
-                    </div>
+                    <Leaderboard />
                     <Tasks isParent={isParent} setIsParent={setIsParent}/>
                     <NewTask siteNumber={props.siteNumber} setSiteNumber={props.setSiteNumber}/>
                 </section>
@@ -63,15 +56,7 @@ function Homepage(props) {
                 <h1 className='hompage-h1'>Welcome Back {username}</h1>
 
                 <section className='tie-grid-container'>
-                    <div className='grid-child leaderboard-container'>
-                        <h2>Leaderboard</h2>
-
-                        <p>1. Brown foxerman</p>
-                        <p>2. Brown foxerman</p>
-                        <p>3. Brown foxerman</p>
-                        <p>4. Brown foxerman</p>
-                        <p>5. Brown foxerman</p>
-                    </div>
+                    <Leaderboard />
                     <Tasks isParent={isParent} setIsParent={setIsParent}/>
                 </section>
             </div>
