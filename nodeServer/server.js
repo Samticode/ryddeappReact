@@ -262,6 +262,28 @@ app.put('/api/updateUser', async (req, res) => {
 });
 
 
+app.get('/api/familyPoints', (req, res) => {
+    const query = `
+        SELECT 
+            Users.Username, 
+            ProfilePictures.ProfilePictureLink,
+            SUM(Chores.Points) as TotalPoints
+        FROM 
+            Users
+        LEFT JOIN 
+            Chores ON Users.UserID = Chores.AssignedUserID
+        LEFT JOIN 
+            ProfilePictures ON Users.ProfilePictureID = ProfilePictures.PictureID
+        WHERE 
+            Users.FamilyID = ?
+        GROUP BY 
+            Users.UserID;
+    `;
+    const data = db.prepare(query).all(req.session.familyId);
+    res.send(data);
+});
+
+
 
 
 app.post('/api/testMail', async (req, res) => {

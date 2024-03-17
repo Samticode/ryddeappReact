@@ -43,26 +43,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            align-items: left;
-
-            h2 {
-                position: absolute;
-                top: 0.5%;
-
-                height: 6%;
-                width: 98%;
-                background-color: var(--green);
-                border-radius: 0.75vmax;
-
-                display: grid;
-                place-items: center;
-            }
-            p {
-                font-weight: 200;
-                margin-left: 20%;
-                font-size: 1.4dvw;
-                letter-spacing: 3cqi;
-            }
         }
 
         .tasks-container {

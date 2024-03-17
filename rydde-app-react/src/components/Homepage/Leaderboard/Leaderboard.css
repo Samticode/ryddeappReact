@@ -1,0 +1,33 @@
+.leaderboard-container {
+
+    h2 {
+        position: absolute;
+        top: 0.5%;
+
+        height: 6%;
+        width: 98%;
+        background-color: var(--green);
+        border-radius: 0.75vmax;
+
+        display: grid;
+        place-items: center;
+    }
+
+    p {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+
+        font-weight: 200;
+        font-size: 1.5dvw;
+        letter-spacing: 3px;
+        margin-left: 5%;
+
+        img {
+            border-radius: 0.75vmax;
+            width: 20%;
+            margin-right: 3%;
+        }
+    }
+}
