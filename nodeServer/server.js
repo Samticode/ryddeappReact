@@ -121,8 +121,8 @@ app.delete('/api/deleteChore', async (req, res) => {
 
 app.put('/api/finishChore', async (req, res) => {
     try {
-        const query = `UPDATE Chores SET Done = 1, AssignedUserID = ? WHERE ChoreID = ?`;
-        const data = db.prepare(query).run(req.session.userId, req.body.choreId);
+        const query = `UPDATE Chores SET Done = 1, AssignedUserID = ?, Date = ? WHERE ChoreID = ?`;
+        const data = db.prepare(query).run(req.session.userId, req.body.date, req.body.choreId);
         res.send({ message: 'Success' });
     } catch (error) {
         res.status(500).send({ message: error });
@@ -188,6 +188,28 @@ app.post('/api/loginFamily', async (req, res) => {
       }
 
       console.log(req.session)
+});
+
+
+app.get('/api/familyPoints', (req, res) => {
+    const query = `
+        SELECT 
+            Users.Username, 
+            ProfilePictures.ProfilePictureLink,
+            SUM(Chores.Points) as TotalPoints
+        FROM 
+            Users
+        LEFT JOIN 
+            Chores ON Users.UserID = Chores.AssignedUserID
+        LEFT JOIN 
+            ProfilePictures ON Users.ProfilePictureID = ProfilePictures.PictureID
+        WHERE 
+            Users.FamilyID = ?
+        GROUP BY 
+            Users.UserID;
+    `;
+    const data = db.prepare(query).all(req.session.familyId);
+    res.send(data);
 });
 
 
@@ -262,55 +284,10 @@ app.put('/api/updateUser', async (req, res) => {
 });
 
 
-app.get('/api/familyPoints', (req, res) => {
-    const query = `
-        SELECT 
-            Users.Username, 
-            ProfilePictures.ProfilePictureLink,
-            SUM(Chores.Points) as TotalPoints
-        FROM 
-            Users
-        LEFT JOIN 
-            Chores ON Users.UserID = Chores.AssignedUserID
-        LEFT JOIN 
-            ProfilePictures ON Users.ProfilePictureID = ProfilePictures.PictureID
-        WHERE 
-            Users.FamilyID = ?
-        GROUP BY 
-            Users.UserID;
-    `;
-    const data = db.prepare(query).all(req.session.familyId);
+app.get('/api/taskHistory', (req, res) => {
+    const query = `SELECT Points, ChoreName, Date FROM Chores WHERE Done = 1 AND AssignedUserID = ?`;
+    const data = db.prepare(query).all(req.session.userId);
     res.send(data);
-});
-
-
-
-
-app.post('/api/testMail', async (req, res) => {
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: req.body.Email,
-            pass: process.env.EMAIL_PASSWORD
-        }
-    });
-
-    const mailOptions = {
-        from: 'Testing System',
-        to: req.body.Email,
-        subject: 'Test mail',
-        text: 'This is a test mail'
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log(error);
-            res.send({ message: 'Error sending mail' });
-        } else {
-            console.log('Email sent: ' + info.response);
-            res.send({ message: 'Email sent' });
-        }
-    });
 });
 
 

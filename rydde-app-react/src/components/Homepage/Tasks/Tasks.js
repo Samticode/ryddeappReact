@@ -30,13 +30,22 @@ function Tasks(props) {
         event.preventDefault();
 
         if (window.confirm('Are you sure you want to finish this task?')) {
+            const date = new Date();
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+            const year = date.getFullYear();
+            
+            const currentDate = `${day}:${month}:${year}`;
+            console.log(currentDate);
+
             const response = await fetch('/api/finishChore', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    choreId: task
+                    choreId: task,
+                    date: currentDate
                 })
             });
 

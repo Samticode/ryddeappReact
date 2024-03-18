@@ -11,6 +11,8 @@ function Profile(props) {
   const [password, setPassword] = useState('');
   const [pfp, setPfp] = useState('');
 
+  const [taskHistory, setTaskHistory] = useState([]);
+
   useEffect(() => {
     async function getUserInfo() {
       const response = await fetch('/api/user');
@@ -33,6 +35,22 @@ function Profile(props) {
       console.log(pfps);
     }
     getAllPfp();
+  }, []);
+
+  useEffect(() => {
+    async function getTaskHistory() {
+      const response = await fetch('/api/taskHistory');
+      let data = await response.json();
+
+      data.sort((a, b) => {
+        let dateA = new Date(a.Date.split(":").reverse().join("-"));
+        let dateB = new Date(b.Date.split(":").reverse().join("-"));
+        return dateB - dateA;
+      });
+
+      setTaskHistory(data);
+    }
+    getTaskHistory();
   }, []);
 
 
@@ -60,25 +78,6 @@ function Profile(props) {
       }
     } else {
 
-    }
-  }
-
-  const handleEmailTest = async event => {
-    event.preventDefault();
-    const response = await fetch('/api/testMail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        Email: email
-      }),
-    });
-    const data = await response.json();
-    if (data.message === 'Email sent') {
-      alert('Test email sent');
-    } else {
-      alert(data.message);
     }
   };
 
@@ -143,12 +142,32 @@ function Profile(props) {
           </div>
         </div>
 
-        <div className='email-test-div'>
-          <div>
-            <h2>Test Email</h2>
-            <p>Send a test email to your email address to verify that it is correct.</p>
-          </div>
-          <button onClick={handleEmailTest}>Send Test Email</button>
+        <div className='task-history-div'>
+          <h2>Task History</h2>
+          <section>
+            {taskHistory.map((task) => (
+            <div>
+              <p><span>{task.ChoreName}</span> <span>{task.Points} Points</span> <span>{task.Date}</span></p>
+            </div>
+            ))}
+
+{/* 
+            <div>
+              <p><span>Wash my car</span> <span>32 points</span> <span>17:03:2024</span></p>
+            </div>
+            <div>
+              <p><span>Wash my car</span> <span>32 points</span> <span>17:03:2024</span></p>
+            </div>
+            <div>
+              <p><span>Wash my car</span> <span>32 points</span> <span>17:03:2024</span></p>
+            </div>
+            <div>
+              <p><span>Wash my car</span> <span>32 points</span> <span>17:03:2024</span></p>
+            </div>
+            <div>
+              <p><span>Wash my car</span> <span>32 points</span> <span>17:03:2024</span></p>
+            </div> */}
+          </section>
         </div>
       </div>
 

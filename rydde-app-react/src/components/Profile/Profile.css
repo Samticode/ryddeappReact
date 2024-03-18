@@ -13,7 +13,7 @@
     margin: 8vh 0 0 0;
 
     h1 {
-        font-size: 3.25vw;
+        font-size: 3.25dvw;
         margin: 0 0 0 0.5em;
     }
 
@@ -35,13 +35,13 @@
             flex-direction: column;
             justify-content: space-around;
             align-items: left;
-            padding: 0 0 0 2vw;
+            padding: 0 0 0 2dvw;
 
             label {
-                font-size: 2vw;
+                font-size: 2dvw;
             }
             input {
-                font-size: 1.5vw;
+                font-size: 1.5dvw;
             }
             input[type='submit'] {
                 position: absolute;
@@ -91,11 +91,11 @@
                     text-align: center;
                 }
                 h2 {
-                    font-size: 2.75vw;
+                    font-size: 2.75dvw;
                     margin: 3% 0;
                 }
                 p {
-                    font-size: 1.5vw;
+                    font-size: 1.5dvw;
                     margin: 0 0 5%;
                 }
                 button {
@@ -106,7 +106,7 @@
     
                     background-color: var(--taupe);
                     color: var(--white);
-                    font-size: 1.25vw;
+                    font-size: 1.25dvw;
                     transition-duration: 250ms;
     
                     &:hover {
@@ -121,50 +121,66 @@
             }
         }
 
-        .email-test-div {
+        .task-history-div {
             height: 94%;
             width: 98%;
             grid-column: 7 / 21;
             grid-row: 6 / 11;
-
+        
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            place-items: center;
-
-            text-align: center;
-
+            grid-template-columns: 0.5fr 1fr;
+        
             h2 {
-                font-size: 2.75vw;
-                margin: 6% 0 5% 2%;
+                font-size: 2.75dvw;
+                margin: 3% 6%;
             }
-            p {
-                font-size: 1.5vw;
-                margin: 3% 0 6% 2%;
-            }
-            button {
-                width: 65%;
-                padding: 8%;
-                border-radius: 1vmax;
-                border: none;
-
-                background-color: var(--taupe);
-                color: var(--white);
-                font-size: 1.25vw;
-                transition-duration: 250ms;
-
-                &:hover {
-                    background-color: var(--taupe-light);
-                    scale: 1.03;
+        
+            section {
+                height: 100%;
+                width: auto;
+                overflow-x: auto;
+        
+                /* Hide scrollbar */
+                ::-webkit-scrollbar {
+                    display: none;
                 }
-                &:active {
-                    background-color: var(--taupe);
-                    scale: 0.98;
+                -ms-overflow-style: none; /* IE and Edge */
+                scrollbar-width: none; /* Firefox */
+        
+                display: flex;
+                flex-wrap: nowrap;
+                align-items: flex-start;
+        
+                div {
+                    flex: 0 0 auto;
+                    height: 95%;
+                    width: 30%;
+                    margin: 1.25% 1%;
+        
+                    p {
+                        height: 100%;
+                        width: 100%;
+                        background-color: var(--dark-seethrough);
+                        border-radius: 1vmax;
+        
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        align-items: center;
+        
+                        font-size: 1.25svw;
+        
+                        span {
+                            
+                        }
+                    }
                 }
             }
         }
+        
     }
 
-    .pfp-option-container{
+    .pfp-option-container {
         position: absolute;
         height: 64%;
         width: 70%;
@@ -209,7 +225,7 @@
         margin: 0 0 0 0;
 
         h1 {
-            font-size:9vw;
+            font-size:9dvw;
             margin: 1% 0 0 0.5em;
         }
 
@@ -223,16 +239,16 @@
                 grid-row: 1 / 11;
                 
                 label {
-                    font-size: 4.5vw;
+                    font-size: 4.5dvw;
                 }
                 input {
-                    font-size: 3.5vw;
+                    font-size: 3.5dvw;
                     width: 95%;
                 }
                 input[type='submit'] {
                     width: 95%;
                     padding: 10% 4%;
-                    font-size: 4vw;
+                    font-size: 4dvw;
                 }
             }
             .profile-picture-div {
@@ -247,42 +263,58 @@
                 .profile-picture-setting-div {
 
                     h2 {
-                        font-size: 5vw;
+                        font-size: 5dvw;
                         margin: 3% 0;
                     }
                     p {
-                        font-size: 3.5vw;
+                        font-size: 3.5dvw;
                         margin: 0 0 5%;
                     }
                     button {
                         width: 95%;
                         padding: 8% 1%;
-                        font-size: 3.5vw;
+                        font-size: 3.5dvw;
                     }
                 
                 }
             }
-            .email-test-div {
+            .task-history-div{
                 height: 96%;
                 width: 95%;
                 grid-column: 10 / 21;
                 grid-row: 6 / 11;
 
+                display: grid;
                 grid-template-columns: none;
-                grid-template-rows: 1fr 1fr;
-
+                grid-template-rows: 0.25fr 1fr;
+            
                 h2 {
-                    font-size: 6vw;
+                    font-size: 5dvw;
+                    margin: 3% 6%;
                 }
-                p {
-                    font-size: 3.25vw;
+                section {
+                    flex-direction: column;
+
+                    div {
+                        margin: 1% auto;
+                        height: 30%;
+                        width: 95%;
+
+                        p {
+                            font-size: 3.5dvw;
+                            flex-direction: row;
+
+                            text-align: center;
+                        }
+                    }
                 }
-                button {
-                    width: 85%;
-                    padding: 8% 1%;
-                    font-size: 3.5vw;
-                }
+
             }
+        }
+
+        .pfp-option-container { 
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, 1fr);
         }
     }
 }

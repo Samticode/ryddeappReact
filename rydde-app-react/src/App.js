@@ -9,11 +9,11 @@ import Navigation from './components/Navigation/Navigation.js';
 import Family from './components/FamilySignUpForm/Family.js';
 import User from './components/User/User.js';
 import Homepage from './components/Homepage/Homepage.js';
-import Profile from './components/Profile/Profile.js';
+import Profile from './components/Profile/Profile.jsx';
 
 
 function App() {
-  const [siteNumber, setSiteNumber] = useState(3);
+  const [siteNumber, setSiteNumber] = useState(4);
   let siteComponent = null;
 
   if (siteNumber === 1) {
