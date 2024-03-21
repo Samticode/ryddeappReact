@@ -71,7 +71,7 @@ function Family(props) {
     const data = await response.json();
 
     if (data.message === 'Success') {
-      alert('Fuck Yeah');
+      alert('Seccessfully logged in!');
       props.setSiteNumber(2);
     } else {
       alert(data.message);
