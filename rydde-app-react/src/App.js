@@ -13,7 +13,7 @@ import Profile from './components/Profile/Profile.jsx';
 
 
 function App() {
-  const [siteNumber, setSiteNumber] = useState(4);
+  const [siteNumber, setSiteNumber] = useState(1);
   let siteComponent = null;
 
   if (siteNumber === 1) {
