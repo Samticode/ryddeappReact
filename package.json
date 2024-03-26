@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "devReact": "concurrently \"node server.js\" \"cd rydde-app-react && npm start\"",
-    "start": "node server.js"
+    "start": "concurrently \"node server.js\" \"cd rydde-app-react && npm start\"",
+    "nei": "node server.js"
   },
   "keywords": [],
   "author": "",
