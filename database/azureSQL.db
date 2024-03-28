@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS Families (
+    FamilyID INTEGER PRIMARY KEY,
+    FamilyName TEXT NOT NULL UNIQUE,
+    FamilyPassword TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS ProfilePictures (
+    PictureID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ProfilePictureLink TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Users (
+    UserID INTEGER PRIMARY KEY,
+    Username TEXT NOT NULL,
+    Email TEXT NOT NULL UNIQUE,
+    Password TEXT NOT NULL,
+    IsParent BOOLEAN NOT NULL,
+    FamilyID INTEGER NOT NULL,
+    ProfilePictureID INTEGER,
+    FOREIGN KEY (FamilyID) REFERENCES Families(FamilyID),
+    FOREIGN KEY (ProfilePictureID) REFERENCES ProfilePictures(PictureID)
+);
+
+CREATE TABLE IF NOT EXISTS Chores (
+    ChoreID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ChoreName TEXT NOT NULL,
+    Description TEXT,
+    AssignedUserID INTEGER,
+    AssignedFamilyID INTEGER,
+    Done INTEGER,
+    Points INTEGER,
+    Date TEXT,
+    FOREIGN KEY (AssignedFamilyID) REFERENCES Families(FamilyID),
+    FOREIGN KEY (AssignedUserID) REFERENCES Users(UserID)
+);
