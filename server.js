@@ -27,6 +27,10 @@ app.use(session({
 
 
 
+app.get('/', (req, res) => {
+    res.send('Welcome to the Family Chore Web App Backend');
+});
+
 
 app.get('/api/all', (req, res) => {
     const query = `

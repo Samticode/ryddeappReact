@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "start": "concurrently \"node server.js\" \"cd rydde-app-react && npm start\"",
+    "start": "node server.js",
     "build": "cd rydde-app-react && npm install && npm run build"
   },
   "keywords": [],
