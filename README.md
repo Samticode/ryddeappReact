@@ -1,3 +1,0 @@
-# ryddeappReact
-
-### Link til applikasjonen kommer snart...
